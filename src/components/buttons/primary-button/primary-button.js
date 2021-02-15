@@ -1,8 +1,11 @@
 import './primary-button.scss';
 
-const PrimaryButton = ({ children }) => {
+const PrimaryButton = ({ 
+    children,
+    disabled
+}) => {
     return (
-        <button className="primary-button">{ children }</button>
+        <button className="primary-button" disabled={ disabled }>{ children }</button>
     );
 }
 
