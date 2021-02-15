@@ -1,0 +1,23 @@
+.secondary-button{
+    background-color: transparent;
+    font-weight: 600;
+    border: .3rem solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 300rem;
+    padding: 1.5rem 3rem;
+    transition: all .2s;
+    cursor: pointer;
+
+    &:hover {
+       border: .3rem solid var(--color-primary-dark); 
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+}

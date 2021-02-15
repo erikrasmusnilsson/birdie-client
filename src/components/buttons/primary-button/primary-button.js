@@ -2,10 +2,15 @@ import './primary-button.scss';
 
 const PrimaryButton = ({ 
     children,
-    disabled
+    disabled,
+    onclick
 }) => {
     return (
-        <button className="primary-button" disabled={ disabled }>{ children }</button>
+        <button className="primary-button" 
+            onClick={ onclick }
+            disabled={ disabled }>
+            { children }
+        </button>
     );
 }
 
