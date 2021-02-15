@@ -1,0 +1,27 @@
+.text-button {
+    background-color: transparent;
+    font-weight: 600;
+    border: none;
+    color: var(--color-primary);
+    padding: 1.5rem 3rem;
+    transition: all .2s;
+    cursor: pointer;
+    border-radius: 300rem;
+
+    &:hover {
+       color: var(--color-primary-dark);
+    }
+
+    &:focus {
+        outline: 0;
+    }
+    
+    &:active {
+        background-color: var(--color-grey-light-1);
+    }
+
+    &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+}
