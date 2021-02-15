@@ -1,5 +1,7 @@
 import './text-input.scss';
 
+import Icon from '../icon';
+
 const TextInput = ({
     value,
     onchange,
@@ -7,9 +9,14 @@ const TextInput = ({
     required,
     min,
     max,
-    className
+    className,
+    icon
 }) => {
-    const classNames = ["text-input-box", className].join(" ");
+    const classNames = [
+        "text-input-box", 
+        className,
+        icon ? "icon-box" : null,
+    ].join(" ");
 
     let counter;
     if (min && !max) {
@@ -31,6 +38,7 @@ const TextInput = ({
                 maxLength={ max } />
             <span className="text-input-box__placeholder">{ placeholder }</span>
             <span className="text-input-box__counter">{ counter }</span>
+            { icon ? <Icon icon={ icon } className="text-input-box__icon" /> : null }
         </div>
     );
 }
