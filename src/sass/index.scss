@@ -3,7 +3,7 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
-}  
+}
 
 body {
     font-size: 1.6rem;
@@ -29,6 +29,12 @@ body {
     --color-grey-dark-1: #999;
     --color-grey-dark-2: #777;
     --color-grey-dark-3: #333;
+
+    --color-success-light: #F2FFFB;
+    --color-success-dark: #00BA88;
+
+    --color-error-light: #FFF3F8;
+    --color-error-dark: #ED2E7E;
 }    
 
 * {
