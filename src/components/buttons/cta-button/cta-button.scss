@@ -1,0 +1,30 @@
+.cta-button {
+    padding: 1.5rem 3rem;
+    color: white;
+    background-color: var(--color-primary);
+    background-image: linear-gradient(to right bottom, var(--color-primary-dark), var(--color-primary-light));
+    border: none;
+    border-radius: 300rem;
+    font-weight: 600;
+    transition: all .2s;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-.5rem) scale(1.05);
+        box-shadow: 0 1.5rem 3rem rgba(#000, .2);
+    }
+
+    &:active {
+        transform: translateY(-.3rem) scale(1.025);
+        box-shadow: 0 .2rem .4rem rgba(#000, .2);
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:disabled  {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+}
