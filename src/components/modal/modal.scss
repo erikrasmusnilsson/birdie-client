@@ -1,0 +1,59 @@
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: all;
+
+    &__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 6rem;
+        border-radius: 2.4rem;
+
+        background-color: white;
+        z-index: 1601;
+
+        animation: modalSlideInBottom .5s ease;
+    }
+
+    &__backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#000, .5);
+        z-index: 1600;
+    }
+
+    &__close-button {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        padding: 0 !important;
+    }
+
+    &__icon-close {
+        width: 2rem;
+        height: 2rem;
+        fill: var(--color-grey-dark-3);
+    }
+}
+
+.modal-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes modalSlideInBottom {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}

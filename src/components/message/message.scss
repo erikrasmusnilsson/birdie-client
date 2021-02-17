@@ -1,7 +1,7 @@
 @import '../../sass/animations.scss';
 
 .message {
-    animation: slideInLeft .3s cubic-bezier(1,0,0,1.6);
+    animation: slideInLeft .3s $bounceTiming;
     backface-visibility: hidden;
     display: inline-block;
 

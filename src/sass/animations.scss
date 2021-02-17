@@ -1,3 +1,5 @@
+$bounceTiming: cubic-bezier(1,0,0,1.6);
+
 @keyframes slideInLeft {
     0% {
         transform: translateX(-12.8rem);
@@ -16,6 +18,17 @@
     }
     100% {
         transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInBottom {
+    0% {
+        transform: translateY(12.8rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
         opacity: 1;
     }
 }
