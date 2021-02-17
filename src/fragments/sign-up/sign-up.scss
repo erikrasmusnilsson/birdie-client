@@ -1,0 +1,58 @@
+@import '../../sass/gradients.scss';
+
+.sign-up {
+    padding: 15rem 0;
+    background-image: $gradient-to-right-bottom;
+    transform: skewY(4deg);
+    
+    background-size: cover;
+
+    & > * {
+        transform: skewY(-4deg);
+    }
+
+    &__form {
+        text-align: center;
+        max-width: 70rem;
+        width: 100%;
+        margin: auto;
+        padding: 6rem 8rem;
+        background-color: rgba(#fff, 1);        
+        border-radius: 2.4rem;
+        box-shadow: 0 2rem 4rem rgba(#000, .3);
+        background-image: linear-gradient(rgba(#fff, .94), rgba(#fff, 1)), url("../../images/birds.jpg");
+        background-size: cover;
+
+        transition: all .3s;
+
+        display: flex;
+        flex-direction: column;
+
+        &:hover {
+            transform: scale(1.05) skewY(-4deg) translateY(-1rem);
+            box-shadow: 0 1.5rem 3rem rgba(#000, .2);
+        }
+    }
+
+    &__title {
+        font-size: 4rem;
+    }
+
+    &__password {
+        flex: 1;
+        display: flex;
+        justify-content: stretch;
+
+         & > * {
+            flex: 1;
+
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+         }
+    }
+
+    &__sign-up-button {
+        align-self: center;
+    }
+}

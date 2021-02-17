@@ -1,0 +1,12 @@
+.home {
+
+    &__login-button {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: white;
+        z-index: 1500;
+        border-bottom-left-radius: 1.4rem;
+        box-shadow: 0 1.5rem 3rem rgba(#000, .1);
+    }
+}

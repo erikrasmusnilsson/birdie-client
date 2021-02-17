@@ -1,8 +1,11 @@
 .modal {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: all;
+    z-index: 2000;
 
     &__content {
         position: absolute;
@@ -36,8 +39,8 @@
     }
 
     &__icon-close {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         fill: var(--color-grey-dark-3);
     }
 }
@@ -45,6 +48,10 @@
 .modal-hidden {
     opacity: 0;
     pointer-events: none;
+
+    .modal__content {
+        animation: none;
+    }
 }
 
 @keyframes modalSlideInBottom {
