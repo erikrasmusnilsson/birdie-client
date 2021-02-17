@@ -1,0 +1,22 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50rem;
+    padding: 0 5rem;
+
+    &__title {
+        text-align: center;
+        font-size: 4rem;
+    }
+
+    &__login-button {
+        margin: auto;
+        padding: 1.5rem 6rem !important;
+    }
+
+    &__signup-button {
+        margin: auto;
+        margin-bottom: -2rem;
+    }
+}

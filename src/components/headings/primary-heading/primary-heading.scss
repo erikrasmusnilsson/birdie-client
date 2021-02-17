@@ -1,0 +1,10 @@
+@import '../../../sass/gradients.scss';
+
+.primary-heading {
+    font-size: 4rem;
+    text-transform: uppercase;
+    background-image: $gradient-to-right;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}

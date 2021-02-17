@@ -1,0 +1,65 @@
+@import "../../sass/mixins.scss";
+@import "../../sass/gradients.scss";
+@import "../../sass/animations.scss";
+
+.home-header {
+    min-height: 95vh;
+
+    background-image: $gradient-to-right-bottom, url("../../images/people-chatting.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+
+    &__content {
+        display: flex;
+        width: 50%;
+        background-color: rgba(#fff, .25);
+        width: 100%;
+        padding: 8rem 6rem;
+        backdrop-filter: blur(.9rem);
+    }
+
+    &__text {
+        flex: 0 0 50%;
+    }
+
+    &__title {
+        color: white;
+        opacity: 0;
+        animation: slideInLeft .6s forwards;
+    }
+
+    &__description {
+        color: white;
+        font-size: 2rem;
+        opacity: 0;
+        animation: slideInLeft .6s .3s forwards;
+    }
+
+    &__images {
+        position: relative;
+        margin-left: 5rem;
+    }
+
+    &__image {
+        max-width: 40rem;
+        position: absolute;
+        top: -18rem;
+        left: 0;
+        box-shadow: 0 1.5rem 3rem rgba(#000, .2);
+        border-radius: 1.6rem;
+        transition: all .3s;
+
+        &:last-child {
+            top: -5rem;
+            left: 15rem;
+        }
+
+        &:hover {
+            transform: translateY(-1rem) scale(1.1) !important;
+            z-index: 1000;
+        }
+    }
+}

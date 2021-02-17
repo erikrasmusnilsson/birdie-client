@@ -3,10 +3,13 @@ import './primary-button.scss';
 const PrimaryButton = ({ 
     children,
     disabled,
-    onclick
+    onclick,
+    className
 }) => {
+    const classNames = ["primary-button", className].join(" ");
+
     return (
-        <button className="primary-button" 
+        <button className={ classNames } 
             onClick={ onclick }
             disabled={ disabled }>
             { children }

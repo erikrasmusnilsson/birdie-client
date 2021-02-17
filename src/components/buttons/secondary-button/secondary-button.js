@@ -3,10 +3,13 @@ import './secondary-button.scss';
 const SecondaryButton = ({ 
     children,
     disabled,
-    onclick
+    onclick,
+    className
 }) => {
+    const classNames = ["secondary-button", className].join(" ");
+
     return (
-        <button onClick={ onclick } className="secondary-button" disabled={ disabled }>{ children }</button>
+        <button onClick={ onclick } className={ classNames } disabled={ disabled }>{ children }</button>
     );
 }
 
