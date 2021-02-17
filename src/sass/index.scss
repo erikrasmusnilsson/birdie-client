@@ -1,13 +1,23 @@
 @import "./typography.scss";
+@import "./mixins.scss";
 
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+
+    @include respond(tab-land) {
+        font-size: 50%;
+    }
+
+    @include respond(tab-port) {
+        font-size: 45%;
+    }
 }
 
 body {
     font-size: 1.6rem;
     margin: 0;
+    width: 100vw;
 
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

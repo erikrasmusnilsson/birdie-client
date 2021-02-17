@@ -20,8 +20,19 @@ $gutter-horizontal: 6rem;
     [class^="column"] {
         float: left;
 
+        @include respond(tab-port) {
+            width: 70% !important;
+            margin: auto;
+            float: none;
+        }
+
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+                margin-bottom: $gutter-vertical-small;
+                margin-right: auto;
+            }
         }
     }
 

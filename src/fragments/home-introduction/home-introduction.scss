@@ -1,3 +1,5 @@
+@import '../../sass/mixins.scss';
+
 .home-introduction {
     padding: 12rem 0;
     text-align: center;
@@ -8,6 +10,11 @@
 
     &__content {
         display: flex;
+
+        @include respond(tab-port) {
+            padding: 0 5rem;
+            flex-direction: column;
+        }
     }
 
     &__text {
@@ -18,6 +25,12 @@
     &__images {
         position: relative;
         margin-left: 5rem;
+
+        @include respond(tab-port) {
+            margin-top: 10rem;
+            flex: 0 0 100%;
+            align-self: center;
+        }
     }
 
     &__image {
@@ -29,9 +42,22 @@
         border-radius: 1.6rem;
         transition: all .3s;
 
+        @include respond(tab-port) {
+            padding: 0 1rem;
+            flex-direction: column;
+            position: relative;
+            max-width: 40rem;
+        }
+
         &:last-child {
             top: 2rem;
             left: 15rem;
+            @include respond(tab-port) {
+                padding: 0 1rem;
+                flex-direction: column;
+                position: absolute;
+                left: -12rem;
+            }
         }
 
         &:hover {

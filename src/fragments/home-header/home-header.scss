@@ -23,12 +23,22 @@
 
     &__text {
         flex: 0 0 50%;
+        margin-left: 10rem;
+
+        @include respond(big-desktop) {
+            margin-left: 0;
+        }
     }
 
     &__title {
         color: white;
         opacity: 0;
         animation: slideInLeft .6s forwards;
+        font-size: 6rem;
+
+        @include respond(big-desktop) {
+            font-size: 4rem;
+        }
     }
 
     &__description {
@@ -44,13 +54,21 @@
     }
 
     &__image {
-        max-width: 40rem;
+        max-width: 50rem;
         position: absolute;
         top: -18rem;
         left: 0;
         box-shadow: 0 1.5rem 3rem rgba(#000, .2);
         border-radius: 1.6rem;
         transition: all .3s;
+
+        @include respond(big-desktop) {
+            max-width: 40rem;
+        }
+
+        @include respond(tab-port) {
+            display: none;
+        }
 
         &:last-child {
             top: -5rem;
