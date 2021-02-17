@@ -3,10 +3,16 @@ import './text-button.scss';
 const TextButton = ({ 
     children,
     disabled,
-    onclick
+    onclick,
+    className
 }) => {
+    const classNames = [
+        "text-button",
+        className
+    ].join(" ");
+
     return (
-        <button className="text-button" 
+        <button className={ classNames }
             onClick={ onclick }
             disabled={ disabled }>
             { children }
