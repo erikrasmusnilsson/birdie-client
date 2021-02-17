@@ -7,6 +7,7 @@ import TextButton from '../../components/buttons/text-button';
 import HomeHeader from '../../fragments/home-header';
 import HomeIntroduction from '../../fragments/home-introduction';
 import SignUp from '../../fragments/sign-up';
+import HomeAbout from '../../fragments/home-about';
 
 const Home = () => {
     const [email, setEmail] = useState('');
@@ -37,6 +38,7 @@ const Home = () => {
                 confirmpassword={ confirmPassword }
                 setconfirmpassword={ setConfirmPassword }
             />
+            <HomeAbout />
         </main>
     );
 }

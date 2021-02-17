@@ -4,29 +4,29 @@ $margin-medium: 4rem;
 $margin-small: 2rem;
 
 .u-margin-bottom-largest {
-    margin-bottom: $margin-largest;
+    margin-bottom: $margin-largest !important;
 }
 
 .u-margin-bottom-large {
-    margin-bottom: $margin-large;
+    margin-bottom: $margin-large !important;
 }
 
 .u-margin-bottom-medium {
-    margin-bottom: $margin-medium;
+    margin-bottom: $margin-medium !important;
 }
 
 .u-margin-bottom-small {
-    margin-bottom: $margin-small;
+    margin-bottom: $margin-small !important;
 }
 
 .u-margin-top-large {
-    margin-top: $margin-large;
+    margin-top: $margin-large !important;
 }
 
 .u-margin-top-medium {
-    margin-top: $margin-medium;
+    margin-top: $margin-medium !important;
 }
 
 .u-margin-top-small {
-    margin-top: $margin-small;
+    margin-top: $margin-small !important;
 }
