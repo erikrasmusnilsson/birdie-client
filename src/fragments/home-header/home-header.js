@@ -5,7 +5,7 @@ const HomeHeader = () => {
         <header className="home-header">
             <div className="home-header__content">
                 <div className="home-header__text">
-                    <h1 className="home-header__title">birdie</h1>
+                    <img className="home-header__title" src={`${process.env.PUBLIC_URL}/images/logo-white.png`} alt="Logo" />
                     <p className="home-header__description">
                         Birdie is the simplest and most stripped down chat application to date! We do not 
                         use any of your data for advertisements, nor do we sell them to third parties. 
