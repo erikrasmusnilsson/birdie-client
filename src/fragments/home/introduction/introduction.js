@@ -1,8 +1,8 @@
-import './home-introduction.scss';
-import '../../sass/grid.scss';
-import '../../sass/utilities.scss';
+import './introduction.scss';
+import '../../../sass/grid.scss';
+import '../../../sass/utilities.scss';
 
-import { PrimaryHeading, TertiaryHeading } from '../../components/headings';
+import { PrimaryHeading, TertiaryHeading } from '../../../components/headings';
 
 const HomeIntroduction = () => {
     return (

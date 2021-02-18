@@ -4,10 +4,10 @@ import { useState } from 'react';
 import LoginModal from '../../containers/login-modal';
 import TextButton from '../../components/buttons/text-button';
 
-import HomeHeader from '../../fragments/home-header';
-import HomeIntroduction from '../../fragments/home-introduction';
+import HomeHeader from '../../fragments/home/header';
+import HomeIntroduction from '../../fragments/home/introduction';
 import SignUp from '../../fragments/sign-up';
-import HomeAbout from '../../fragments/home-about';
+import HomeAbout from '../../fragments/home/about';
 
 const Home = () => {
     // Login
@@ -15,6 +15,8 @@ const Home = () => {
     const [loginPassword, setLoginPassword] = useState('');
 
     // Signup
+    const [signupFirstName, setSignupFirstName] = useState('');
+    const [signupLastName, setSignupLastName] = useState('');
     const [signupEmail, setSignupEmail] = useState('');
     const [signupPassword, setSignupPassword] = useState('');
     const [confirmSignupPassword, setConfirmSignupPassword] = useState('');
@@ -37,6 +39,10 @@ const Home = () => {
             <HomeHeader />
             <HomeIntroduction />
             <SignUp
+                firstName={ signupFirstName }
+                setfirstname={ setSignupFirstName }
+                lastName={ signupLastName }
+                setlastname={ setSignupLastName }
                 email={ signupEmail }
                 setemail={ setSignupEmail }
                 password={ signupPassword }

@@ -1,11 +1,11 @@
-@import "../../sass/mixins.scss";
-@import "../../sass/gradients.scss";
-@import "../../sass/animations.scss";
+@import "../../../sass/mixins.scss";
+@import "../../../sass/gradients.scss";
+@import "../../../sass/animations.scss";
 
 .home-header {
     min-height: 95vh;
 
-    background-image: $gradient-to-right-bottom, url("../../images/people-chatting.jpg");
+    background-image: $gradient-to-right-bottom, url("../../../images/people-chatting.jpg");
     background-size: cover;
     display: flex;
     align-items: center;
