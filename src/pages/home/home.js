@@ -4,15 +4,23 @@ import { useState } from 'react';
 import LoginModal from '../../containers/login-modal';
 import TextButton from '../../components/buttons/text-button';
 
-import HomeHeader from '../../fragments/home-header';
-import HomeIntroduction from '../../fragments/home-introduction';
+import HomeHeader from '../../fragments/home/header';
+import HomeIntroduction from '../../fragments/home/introduction';
 import SignUp from '../../fragments/sign-up';
-import HomeAbout from '../../fragments/home-about';
+import HomeAbout from '../../fragments/home/about';
 
 const Home = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    // Login
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+
+    // Signup
+    const [signupFirstName, setSignupFirstName] = useState('');
+    const [signupLastName, setSignupLastName] = useState('');
+    const [signupEmail, setSignupEmail] = useState('');
+    const [signupPassword, setSignupPassword] = useState('');
+    const [confirmSignupPassword, setConfirmSignupPassword] = useState('');
+
     const [showLogin, setShowLogin] = useState('');
 
     return (
@@ -20,10 +28,10 @@ const Home = () => {
             <LoginModal 
                 visible={ showLogin }
                 onclose={ () => setShowLogin(false) }
-                email={ email }
-                setemail={ setEmail }
-                password={ password }
-                setpassword={ setPassword }
+                email={ loginEmail }
+                setemail={ setLoginEmail }
+                password={ loginPassword }
+                setpassword={ setLoginPassword }
             />
             <div className="home__login-button">
                 <TextButton onclick={ () => setShowLogin(true) }>Log in/sign up</TextButton>
@@ -31,12 +39,16 @@ const Home = () => {
             <HomeHeader />
             <HomeIntroduction />
             <SignUp
-                email={ email }
-                setemail={ setEmail }
-                password={ password }
-                setpassword={ setPassword }
-                confirmpassword={ confirmPassword }
-                setconfirmpassword={ setConfirmPassword }
+                firstName={ signupFirstName }
+                setfirstname={ setSignupFirstName }
+                lastName={ signupLastName }
+                setlastname={ setSignupLastName }
+                email={ signupEmail }
+                setemail={ setSignupEmail }
+                password={ signupPassword }
+                setpassword={ setSignupPassword }
+                confirmpassword={ confirmSignupPassword }
+                setconfirmpassword={ setConfirmSignupPassword }
             />
             <HomeAbout />
         </main>

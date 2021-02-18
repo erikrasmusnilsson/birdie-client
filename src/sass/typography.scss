@@ -1,5 +1,6 @@
 p {
     color: var(--color-grey-dark-2);
+    line-height: 2;
     &:not(:last-child) {
         margin-bottom: 3rem;
     } 

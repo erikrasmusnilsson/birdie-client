@@ -1,8 +1,8 @@
-import './home-about.scss';
-import '../../sass/utilities.scss';
+import './about.scss';
+import '../../../sass/utilities.scss';
 
-import About from '../../containers/about';
-import PrimaryHeading from '../../components/headings/primary-heading';
+import About from '../../../containers/about';
+import PrimaryHeading from '../../../components/headings/primary-heading';
 
 const HomeAbout = () => {
     return (

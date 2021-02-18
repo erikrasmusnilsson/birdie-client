@@ -8,6 +8,10 @@ import SecondaryButton from '../../components/buttons/secondary-button';
 import PrimaryHeading from '../../components/headings/primary-heading';
 
 const SignUp = ({
+    firstName, 
+    setfirstname,
+    lastName,
+    setlastname,
     email,
     setemail,
     password,
@@ -20,6 +24,24 @@ const SignUp = ({
         <section className="sign-up">
             <div className="sign-up__form">
                 <h2 className="u-margin-bottom-medium sign-up__title">Joooin us</h2>
+                <div className="sign-up__user-names">
+                    <TextInput 
+                        className="u-margin-bottom-small"
+                        placeholder="First name" 
+                        icon="icon-user" 
+                        required
+                        value={ firstName }
+                        onchange={ setfirstname }    
+                    />
+                    <TextInput 
+                        className="u-margin-bottom-small"
+                        placeholder="Last name" 
+                        icon="icon-user" 
+                        required
+                        value={ lastName }
+                        onchange={ setlastname }    
+                    />
+                </div>
                 <TextInput 
                     className="u-margin-bottom-small"
                     placeholder="Email" 
