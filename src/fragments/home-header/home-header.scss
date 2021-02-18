@@ -15,7 +15,7 @@
     &__content {
         display: flex;
         width: 50%;
-        background-color: rgba(#fff, .25);
+        background-image: linear-gradient(to right bottom, transparent, rgba(255,255,255,.2));
         width: 100%;
         padding: 8rem 6rem;
         backdrop-filter: blur(.9rem);
