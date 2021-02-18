@@ -10,9 +10,15 @@ import SignUp from '../../fragments/sign-up';
 import HomeAbout from '../../fragments/home-about';
 
 const Home = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    // Login
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+
+    // Signup
+    const [signupEmail, setSignupEmail] = useState('');
+    const [signupPassword, setSignupPassword] = useState('');
+    const [confirmSignupPassword, setConfirmSignupPassword] = useState('');
+
     const [showLogin, setShowLogin] = useState('');
 
     return (
@@ -20,10 +26,10 @@ const Home = () => {
             <LoginModal 
                 visible={ showLogin }
                 onclose={ () => setShowLogin(false) }
-                email={ email }
-                setemail={ setEmail }
-                password={ password }
-                setpassword={ setPassword }
+                email={ loginEmail }
+                setemail={ setLoginEmail }
+                password={ loginPassword }
+                setpassword={ setLoginPassword }
             />
             <div className="home__login-button">
                 <TextButton onclick={ () => setShowLogin(true) }>Log in/sign up</TextButton>
@@ -31,12 +37,12 @@ const Home = () => {
             <HomeHeader />
             <HomeIntroduction />
             <SignUp
-                email={ email }
-                setemail={ setEmail }
-                password={ password }
-                setpassword={ setPassword }
-                confirmpassword={ confirmPassword }
-                setconfirmpassword={ setConfirmPassword }
+                email={ signupEmail }
+                setemail={ setSignupEmail }
+                password={ signupPassword }
+                setpassword={ setSignupPassword }
+                confirmpassword={ confirmSignupPassword }
+                setconfirmpassword={ setConfirmSignupPassword }
             />
             <HomeAbout />
         </main>
