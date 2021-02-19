@@ -8,6 +8,7 @@ import PasswordInput from '../../components/password-input';
 import { PrimaryButton, TextButton } from '../../components/buttons';
 
 const LoginModal = ({
+    prompt,
     visible, 
     onclose,
     email,
@@ -21,6 +22,7 @@ const LoginModal = ({
         <Modal visible={ visible } onclose={ onclose }>
             <div className="login">
                 <h2 className="login__title u-margin-bottom-medium">Log in</h2>
+                { prompt !== "" ? <p className="login__prompt">{ prompt }</p> : null }
                 <TextInput placeholder='Email'
                     value={ email }
                     onchange={ setemail } 
