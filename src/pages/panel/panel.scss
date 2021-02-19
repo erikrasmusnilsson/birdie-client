@@ -4,6 +4,7 @@
 
     &__create-room-button {
         align-self: flex-start;
+        padding: 1rem 2.5rem;
     }
 
     &__logout-button {
@@ -22,5 +23,10 @@
         margin-right: 1rem;
         fill: var(--color-primary);
         transform: translateY(.3rem);
+    }
+
+    &__logo {
+        align-self: flex-end;
+        max-width: 12rem;
     }
 }

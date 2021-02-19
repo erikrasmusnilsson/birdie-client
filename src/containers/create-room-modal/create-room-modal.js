@@ -15,7 +15,7 @@ const CreateRoomModal = ({
     return (
         <Modal visible={ visible } onclose={ onclose }>
             <div className="create-room">
-                <h2 className="create-room__title u-margin-bottom-medium">Create room</h2>
+                <h2 className="create-room__title u-margin-bottom-medium">Let's chat!</h2>
                 <TextInput 
                     placeholder="Room name"
                     icon="icon-pencil"
