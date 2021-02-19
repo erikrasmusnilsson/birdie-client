@@ -49,7 +49,8 @@ const Panel = ({ user, onLogout }) => {
                 <Header 
                     firstName={ user.firstName } 
                     lastName={ user.lastName } 
-                    img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
+                    //img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
+                    img={ `https://i.imgur.com/T65roqH.gif` } 
                     searchQuery={ searchQuery }
                     setSearchQuery={ setSearchQuery }
                 />

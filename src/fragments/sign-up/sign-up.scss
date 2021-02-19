@@ -7,11 +7,8 @@
     
     background-size: cover;
 
-    & > * {
-        transform: skewY(-4deg);
-    }
-
     &__form {
+        transform: skewY(-4deg);
         text-align: center;
         max-width: 70rem;
         width: 100%;
