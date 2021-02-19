@@ -27,12 +27,13 @@ const TextArea = ({
         <div className={ classNames }>
             <textarea 
                 className="text-area-box__input"
-                onchange={ e => onchange(e.target.value) }
+                onChange={ e => onchange(e.target.value) }
                 placeholder={ placeholder }
                 required={ required }
                 min={ min }
                 max={ max }
-            >{ value }</textarea>
+                value={ value }
+            ></textarea>
             <span className="text-area-box__counter">{ counter }</span>
         </div>
     );

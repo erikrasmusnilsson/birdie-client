@@ -9,7 +9,7 @@ const getJoinedRooms = async () => {
                 _id: "602d50163d9ab928d0bb15ea",
                 name: "Secret Chat",
                 description: "Let's talk about area 52",
-                isOwner: false,
+                isOwner: true,
                 members: 10
             },
             {

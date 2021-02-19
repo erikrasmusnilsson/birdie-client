@@ -1,9 +1,9 @@
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const Protected = ({ user, children }) => {
     const history = useHistory();
-    if (user) {
+    if (user["_id"]) {
         return children;
     } else {
         history.push("/logged-out");
