@@ -11,7 +11,6 @@ const login = async (email, password) => {
                 lastName: "Smith",
                 email: "john@smith.com",
                 description: "Lorem ipsum dolor sit amet.",
-                rooms: []
             };
             return user;
         } else {

@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    align-items: center;
+
+    &__search {
+        flex: 0 0 55%;
+    }
+}
+
+.profile {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+
+    &__text {
+        margin-left: 1rem;
+    }
+
+    &__welcome {
+        margin-bottom: 0 !important;
+    }
+}

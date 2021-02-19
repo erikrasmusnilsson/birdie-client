@@ -1,0 +1,26 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+
+    &__create-room-button {
+        align-self: flex-start;
+    }
+
+    &__logout-button {
+        position: fixed;
+        top: 0;
+        right: 0;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__logout-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1rem;
+        fill: var(--color-primary);
+        transform: translateY(.3rem);
+    }
+}

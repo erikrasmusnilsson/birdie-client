@@ -3,10 +3,12 @@ import './subtle-button.scss';
 const SubtleButton = ({ 
     children,
     disabled,
-    onclick
+    onclick,
+    className
 }) => {
+    const classNames=["subtle-button", className].join(" ");
     return (
-        <button className="subtle-button" 
+        <button className={ classNames }
             onClick={ onclick }
             disabled={ disabled }>
             { children }

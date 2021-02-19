@@ -1,8 +1,9 @@
 import './home.scss';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { login, signup } from '../../services/user';
 import { connect } from 'react-redux';
-import { TYPE_LOG_IN, TYPE_REFRESH } from '../../store/actions';
+import { TYPE_LOG_IN } from '../../store/actions';
 
 import LoginModal from '../../containers/login-modal';
 import TextButton from '../../components/buttons/text-button';
@@ -12,7 +13,9 @@ import HomeIntroduction from '../../fragments/home/introduction';
 import SignUp from '../../fragments/sign-up';
 import HomeAbout from '../../fragments/home/about';
 
-const Home = ({ onLogin, user }) => {
+const Home = ({ onLogin }) => {
+    const history = useHistory();
+
     // Login
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -33,6 +36,7 @@ const Home = ({ onLogin, user }) => {
             const user = await login(loginEmail, loginPassword);
             onLogin(user);
             setLoginPrompt("");
+            history.push("/panel");
         } catch (err) {
             setLoginPrompt("Invalid username or password");
         }
@@ -109,12 +113,6 @@ const Home = ({ onLogin, user }) => {
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        user: state.user
-    };
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         onLogin: user => dispatch({
@@ -124,4 +122,4 @@ const mapDispatchToProps = dispatch => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);

@@ -1,7 +1,7 @@
 import { TYPE_LOG_IN, TYPE_LOG_OUT } from './actions';
 
 const initial = {
-    user: null
+    user: {}
 }
 
 const reducer = (_state = initial, action) => {
@@ -17,7 +17,7 @@ const reducer = (_state = initial, action) => {
             };
             break;
         case TYPE_LOG_OUT: 
-            state.user = null;
+            state.user = {};
             break;
     }
     return state;

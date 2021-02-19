@@ -1,0 +1,41 @@
+.text-area-box {
+    position: relative;
+
+    &__input {
+        padding: 1.5rem 2rem;
+        background-color: var(--color-grey-light-2);
+        border: none;
+        border-radius: 1.6rem;
+        position: relative;
+        border: .2rem solid transparent;
+        transition: all .3s;
+        z-index: 102;
+        width: 100%;
+        height: 15rem;
+        font-family: inherit;
+        box-sizing: border-box;
+        font-size: inherit;
+
+        &:focus {
+            outline: 0;
+            border-color: var(--color-grey-dark-3);
+            background-color: white;
+        }
+
+        &:disabled {
+            opacity: .5;
+        }
+
+        &::placeholder {
+            color: var(--color-grey-light-4);
+        }
+    }
+
+    &__counter {
+        position: absolute;
+        bottom: -1.2rem;
+        right: 1rem;
+        font-size: 1.1rem;
+        color: var(--color-grey-dark-1);
+    }
+}

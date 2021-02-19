@@ -1,0 +1,22 @@
+.create-room {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50rem;
+    padding: 0 5rem;
+
+    &__title {
+        text-align: center;
+        font-size: 4rem;
+    }
+
+    &__create-room-button {
+        margin: auto;
+        padding: 1.5rem 6rem !important;
+    }
+
+    &__prompt {
+        color: red;
+        text-align: center;
+    }
+}

@@ -1,0 +1,25 @@
+.Wrapper {
+    transition: all .5s ease-out;
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.ToLeft {
+    opacity: 0;
+    transform: translate(5rem, 0);
+}
+
+.ToRight {
+    opacity: 0;
+    transform: translate(-5rem, 0);
+}
+
+.ToBottom {
+    opacity: 0;
+    transform: translate(0, -5rem);
+}
+
+.ToTop {
+    opacity: 0;
+    transform: translate(0, 5rem);
+}
