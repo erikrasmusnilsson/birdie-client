@@ -1,0 +1,61 @@
+.room-list {
+    list-style-type: none;
+    padding: 0 1.5rem;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        
+        &:not(:last-child) {
+            margin-bottom: 3.5rem;
+        }
+    }
+
+    &__owner {
+        font-size: 1.2rem;
+    }
+
+    &__name {
+        color: var(--color-grey-dark-2);
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: auto;
+        position: relative;
+
+        & > * {
+            margin-left: 1.5rem;
+        }
+    }
+
+    &__delete-button,
+    &__join-button {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+    &__delete-button {
+        width: 4rem;
+        height: 4rem;
+        padding: 0 !important;
+        position: absolute;
+        right: -5.5rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-color: #e74c3c;
+    }
+
+    &__delete-icon {
+        width: 1rem;
+        height: 1rem;
+        fill: #e74c3c;
+    }
+}

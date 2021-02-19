@@ -1,0 +1,18 @@
+.user-profile {
+    margin-top: 4rem;
+    position: relative;
+
+    &__edit-button {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        display: inline-block;
+        padding: 1rem !important;
+    }
+
+    &__edit-icon {
+        width: 2rem;
+        height: 2rem;
+        fill: var(--color-grey-dark-2);
+    }
+}
