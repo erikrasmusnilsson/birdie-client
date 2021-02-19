@@ -1,14 +1,30 @@
 .room-list {
     list-style-type: none;
-    padding: 0 1.5rem;
 
     &__item {
         display: flex;
         align-items: center;
+        transition: all .2s;
+        backface-visibility: hidden;
+        padding: 0 1.5rem;
+
+
+        &:hover {
+            transform: translateX(3rem);
+        }
         
         &:not(:last-child) {
-            margin-bottom: 3.5rem;
+            padding-bottom: 2.5rem;
         }
+    }
+
+    &__item:hover &__delete-button {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+
+    &__title {
+        position: relative;
     }
 
     &__owner {
@@ -40,22 +56,32 @@
     }
 
     &__delete-button {
-        width: 4rem;
-        height: 4rem;
+        width: 2rem;
+        height: 2rem;
         padding: 0 !important;
         position: absolute;
-        right: -5.5rem;
+        right: -3rem;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
         border-color: #e74c3c;
+        background-color: #e74c3c;
+
+        position: absolute;
+        top: 50%;
+        left: -3rem;
+        transform: translateY(-50%) translateX(-3rem);
+
+        transition: opacity .3s, transform .3s;
+
+        opacity: 0;
     }
 
     &__delete-icon {
-        width: 1rem;
-        height: 1rem;
-        fill: #e74c3c;
+        width: .8rem;
+        height: .8rem;
+        fill: white;
     }
 }

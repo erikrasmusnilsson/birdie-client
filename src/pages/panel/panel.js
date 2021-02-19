@@ -44,6 +44,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
     return (
         <Protected>
             <main className="row panel">
+                <img className="panel__logo u-margin-top-medium" src={`${process.env.PUBLIC_URL}/images/logo-color.png`} alt="Logo" />
                 <div className="panel__logout-button">
                     <TextButton onclick={ logout }>
                         <Icon icon="icon-heart-broken" className="panel__logout-icon" />

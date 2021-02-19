@@ -13,7 +13,7 @@ const Header = ({
     setSearchQuery
 }) => {
     return (
-        <section className="header u-margin-top-large">
+        <section className="header u-margin-top-medium">
             <div className="profile">
                 <Avatar src={ img } online story/>
                 <div className="profile__text">

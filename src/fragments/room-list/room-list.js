@@ -15,15 +15,15 @@ const RoomList = ({ rooms }) => {
                         ? <p className="room-list__owner">Owner</p>
                         : null 
                     }
-                </div>
-                <div className="room-list__controls">
-                    <p className="room-list__users">{ room.members } room members</p>
-                    <SecondaryButton className="room-list__join-button">Join</SecondaryButton>
                     { 
                         room.isOwner 
                         ? <SubtleButton className="room-list__delete-button"><Icon className="room-list__delete-icon" icon="icon-cross" /></SubtleButton>
                         : null 
                     }
+                </div>
+                <div className="room-list__controls">
+                    <p className="room-list__users">{ room.members } room members</p>
+                    <SecondaryButton className="room-list__join-button">Join</SecondaryButton>
                 </div>
             </li>
         )

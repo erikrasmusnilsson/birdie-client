@@ -1,3 +1,5 @@
+@import '../../sass/animations.scss';
+
 .user-profile {
     margin-top: 4rem;
     position: relative;
@@ -19,6 +21,8 @@
     &__description {
         line-height: 1.5;
         margin-top: 1rem;
+        opacity: 0;
+        animation: fadeIn .5s forwards ease-out;
     }
 
     &__content {
@@ -42,5 +46,8 @@
 
     &__description-input {
         margin-top: 1rem;
+        transform: scale(0);
+        opacity: 0;
+        animation: popIn .5s forwards;
     }
 }
