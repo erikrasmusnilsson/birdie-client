@@ -5,9 +5,9 @@ import '../../sass/utilities.scss';
 import TextInput from '../../components/text-input';
 import PasswordInput from '../../components/password-input';
 import SecondaryButton from '../../components/buttons/secondary-button';
-import PrimaryHeading from '../../components/headings/primary-heading';
 
 const SignUp = ({
+    prompt,
     firstName, 
     setfirstname,
     lastName,
@@ -24,6 +24,7 @@ const SignUp = ({
         <section className="sign-up">
             <div className="sign-up__form">
                 <h2 className="u-margin-bottom-medium sign-up__title">Joooin us</h2>
+                { prompt !== "" ? <p className="sign-up__prompt">{ prompt }</p> : null }
                 <div className="sign-up__user-names">
                     <TextInput 
                         className="u-margin-bottom-small"
