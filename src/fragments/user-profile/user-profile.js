@@ -31,7 +31,7 @@ const UserProfile = ({
                 <div className="user-profile__content">
                     <p className="user-profile__description">{ description }</p>
                     <TextButton onclick={ onStartEdit } className="user-profile__edit-button">
-                        <Icon icon="icon-pencil" className="user-profile__edit-icon" />
+                        <Icon icon="icon-edit-2" className="user-profile__edit-icon" />
                     </TextButton>
                 </div>
             )}

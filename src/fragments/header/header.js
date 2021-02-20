@@ -25,7 +25,7 @@ const Header = ({
                 </div>
             </div>
             <TextInput 
-                icon="icon-cool2"
+                icon="icon-search"
                 placeholder="Search for a room to join..."
                 required
                 className="header__search"

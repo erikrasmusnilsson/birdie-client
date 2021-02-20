@@ -25,7 +25,7 @@ const RoomItem = ({
                 }
                 { 
                     isOwner 
-                    ? <SubtleButton className="room-item__delete-button"><Icon className="room-item__delete-icon" icon="icon-cross" /></SubtleButton>
+                    ? <SubtleButton className="room-item__delete-button"><Icon className="room-item__delete-icon" icon="icon-x" /></SubtleButton>
                     : null 
                 }
             </div>

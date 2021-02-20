@@ -51,7 +51,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
             <main className="row panel">
                 <div className="panel__logout-button u-margin-top-small">
                     <TextButton onclick={ logout }>
-                        Log out
+                        <Icon icon="icon-log-out" className="panel__logout-icon" />
                     </TextButton>
                 </div>
                 <CreateRoomModal 
