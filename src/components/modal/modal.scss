@@ -1,3 +1,5 @@
+@import '../../sass/animations.scss';
+
 .modal {
     position: fixed;
     top: 0;
@@ -29,6 +31,7 @@
         height: 100%;
         background-color: rgba(#000, .5);
         z-index: 1600;
+        animation: fadeIn .5s;
     }
 
     &__close-button {
@@ -50,6 +53,10 @@
     pointer-events: none;
 
     .modal__content {
+        animation: none;
+    }
+
+    .modal__backdrop {
         animation: none;
     }
 }
