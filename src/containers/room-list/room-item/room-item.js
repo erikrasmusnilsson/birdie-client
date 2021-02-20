@@ -7,15 +7,21 @@ const RoomItem = ({
     name,
     isOwner,
     memberAmount,
-    id
+    id,
+    animationDelay
 }) => {
+    const wrapperClassName = [
+        "room-item",
+        animationDelay ? 'room-item-animated' : null
+    ].join(" ");
+
     const titleClassName = [
         'room-item__title',
-        isOwner ? 'room-item__owner-title' : null
+        isOwner ? 'room-item__owner-title' : null,
     ].join(" ");
 
     return (
-        <li className="room-item">
+        <li className={ wrapperClassName } style={{animationDelay: `${animationDelay}s`}}>
             <div className={ titleClassName }>
                 <h4 className="room-item__name">{ name }</h4>
                 { 

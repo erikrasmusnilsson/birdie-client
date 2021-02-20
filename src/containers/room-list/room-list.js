@@ -6,7 +6,9 @@ import RoomItem from './room-item';
 const RoomList = ({ rooms, className }) => {
     const classNames = ["room-list", className].join(" ");
 
+    let animationDelay = 0;
     const roomList = rooms.map(room => {
+        animationDelay += .15;
         return (
             <RoomItem 
                 name={ room.name }
@@ -14,6 +16,7 @@ const RoomList = ({ rooms, className }) => {
                 isOwner={ room.isOwner }
                 id={ room.id }
                 key={ room.id }
+                animationDelay={ animationDelay }
             />
         )
     });

@@ -1,3 +1,5 @@
+@import '../../../sass/animations.scss';
+
 .room-item {
     display: flex;
     align-items: center;
@@ -83,4 +85,10 @@
         height: 1.2rem;
         fill: white;
     }
+}
+
+.room-item-animated {
+    animation: slideInBottom .5s ease forwards;
+    transform: translateY(12.8rem);
+    opacity: 0;
 }
