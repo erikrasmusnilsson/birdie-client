@@ -1,11 +1,10 @@
 import './user-profile.scss';
-import { CSSTransition } from 'react-transition-group';
 
 import ShadowBox from '../../components/shadow-box';
 import TertiaryHeading from '../../components/headings/tertiary-heading';
 import Icon from '../../components/icon';
-import { TextButton, SubtleButton } from '../../components/buttons';
-import TextArea from '../../components/text-area';
+import { TextButton } from '../../components/buttons';
+import EditMode from './edit-mode';
 
 const UserProfile = ({
     description,
@@ -19,26 +18,15 @@ const UserProfile = ({
         <ShadowBox className="user-profile">
             <TertiaryHeading>Your profile, your home</TertiaryHeading>
             { edit ? (
-                <div className="user-profile__content">
-                    <CSSTransition>
-                        <TextArea 
-                            className="user-profile__description-input"
-                            value={ description } 
-                            onchange={ setDescription } 
-                            required 
-                            max={ 256 }
-                        />
-                    </CSSTransition>
-                    <div className="user-profile__controls">
-                        <TextButton onclick={ onCancel } className="user-profile__save-button u-margin-top-small">Cancel</TextButton> 
-                        <SubtleButton onclick={ onSave } className="user-profile__save-button u-margin-top-small">Save</SubtleButton>
-                    </div>
-                </div>
+                <EditMode 
+                    description={ description }
+                    setDescription={ setDescription }
+                    onCancel={ onCancel }
+                    onSave={ onSave }
+                />
             ) : (
                 <div className="user-profile__content">
-                    <CSSTransition>
-                        <p className="user-profile__description">{ description }</p>
-                    </CSSTransition>
+                    <p className="user-profile__description">{ description }</p>
                     <TextButton onclick={ onStartEdit } className="user-profile__edit-button">
                         <Icon icon="icon-pencil" className="user-profile__edit-icon" />
                     </TextButton>

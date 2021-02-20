@@ -10,7 +10,7 @@ import { TYPE_LOG_IN, TYPE_LOG_OUT } from '../../store/actions';
 
 import Header from '../../fragments/header';
 import UserProfile from '../../fragments/user-profile';
-import RoomList from '../../fragments/room-list';
+import RoomList from '../../containers/room-list';
 import CreateRoomModal from '../../containers/create-room-modal';
 import Icon from '../../components/icon';
 import { TextButton, SubtleButton } from '../../components/buttons';
@@ -40,6 +40,11 @@ const Panel = ({ user, onLogout, updateUser }) => {
         updateUser(newUser);
         setEditingDescription(false);
     }
+
+    const onDescriptionCancel = () => {
+        setDescription(user.description);
+        setEditingDescription(false);
+    }
  
     return (
         <Protected>
@@ -60,8 +65,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 <Header 
                     firstName={ user.firstName } 
                     lastName={ user.lastName } 
-                    //img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
-                    img={ `https://i.imgur.com/T65roqH.gif` } 
+                    img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
                     searchQuery={ searchQuery }
                     setSearchQuery={ setSearchQuery }
                 />
@@ -70,7 +74,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
                     setDescription={ setDescription }
                     edit={ editingDescription }
                     onStartEdit={ () => setEditingDescription(true) }
-                    onCancel={ () => setEditingDescription(false) }
+                    onCancel={ onDescriptionCancel }
                     onSave={ onDescriptionSave }
                 />
                 <SubtleButton 

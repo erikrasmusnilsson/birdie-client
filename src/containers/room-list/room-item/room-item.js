@@ -1,6 +1,6 @@
 import './room-item.scss';
 
-import { SubtleButton, SecondaryButton } from '../../../components/buttons';
+import { SubtleButton } from '../../../components/buttons';
 import Icon from '../../../components/icon';
 
 const RoomItem = ({
@@ -31,7 +31,7 @@ const RoomItem = ({
             </div>
             <div className="room-item__controls">
                 <p className="room-item__users">{ memberAmount } room members</p>
-                <SecondaryButton className="room-item__join-button">Join</SecondaryButton>
+                <SubtleButton className="room-item__join-button">Join</SubtleButton>
             </div>
         </li>
     )

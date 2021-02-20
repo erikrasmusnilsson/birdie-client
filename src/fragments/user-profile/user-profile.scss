@@ -32,22 +32,4 @@
         justify-content: flex-start;
         align-items: stretch;
     }
-
-    &__save-button {
-        align-self: flex-end;
-        padding: 1rem 3rem;
-    }
-
-    &__controls {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
-
-    &__description-input {
-        margin-top: 1rem;
-        transform: scale(0);
-        opacity: 0;
-        animation: popIn .5s forwards;
-    }
 }
