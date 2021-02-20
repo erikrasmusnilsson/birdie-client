@@ -3,7 +3,9 @@ import '../../sass/utilities.scss';
 
 import RoomItem from './room-item';
 
-const RoomList = ({ rooms }) => {
+const RoomList = ({ rooms, className }) => {
+    const classNames = ["room-list", className].join(" ");
+
     const roomList = rooms.map(room => {
         return (
             <RoomItem 
@@ -17,7 +19,7 @@ const RoomList = ({ rooms }) => {
     });
 
     return (
-        <ul className="room-list">
+        <ul className={ classNames }>
             { roomList }
         </ul>
     )

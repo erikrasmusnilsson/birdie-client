@@ -13,7 +13,7 @@ import UserProfile from '../../fragments/user-profile';
 import RoomList from '../../containers/room-list';
 import CreateRoomModal from '../../containers/create-room-modal';
 import Icon from '../../components/icon';
-import { TextButton, SubtleButton } from '../../components/buttons';
+import { TextButton, PrimaryButton } from '../../components/buttons';
 
 const Panel = ({ user, onLogout, updateUser }) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -49,10 +49,8 @@ const Panel = ({ user, onLogout, updateUser }) => {
     return (
         <Protected>
             <main className="row panel">
-                <img className="panel__logo u-margin-top-medium" src={`${process.env.PUBLIC_URL}/images/logo-color.png`} alt="Logo" />
-                <div className="panel__logout-button">
+                <div className="panel__logout-button u-margin-top-small">
                     <TextButton onclick={ logout }>
-                        <Icon icon="icon-heart-broken" className="panel__logout-icon" />
                         Log out
                     </TextButton>
                 </div>
@@ -70,6 +68,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
                     setSearchQuery={ setSearchQuery }
                 />
                 <UserProfile 
+                    className="u-margin-top-medium"
                     description={ description } 
                     setDescription={ setDescription }
                     edit={ editingDescription }
@@ -77,11 +76,15 @@ const Panel = ({ user, onLogout, updateUser }) => {
                     onCancel={ onDescriptionCancel }
                     onSave={ onDescriptionSave }
                 />
-                <SubtleButton 
-                    className="u-margin-top-small u-margin-bottom-small panel__create-room-button"
-                    onclick={ () => setCreateModalVisible(true) }
-                >Create room</SubtleButton>
-                <RoomList rooms={ joinedRooms } />
+                <PrimaryButton 
+                    className="panel__create-room-button u-margin-top-small"
+                    onclick={ () => setCreateModalVisible(true) }>
+                    <Icon className="panel__create-room-icon" icon="icon-plus" />
+                </PrimaryButton>
+                <RoomList 
+                    className="u-margin-top-small"
+                    rooms={ joinedRooms } 
+                />
             </main>
         </Protected>
     )

@@ -12,10 +12,13 @@ const UserProfile = ({
     edit,
     onStartEdit,
     onCancel,
-    onSave
+    onSave,
+    className
 }) => {
+    const classNames = ["user-profile", className].join(" ");
+
     return (
-        <ShadowBox className="user-profile">
+        <ShadowBox className={ classNames }>
             <TertiaryHeading>Your profile, your home</TertiaryHeading>
             { edit ? (
                 <EditMode 

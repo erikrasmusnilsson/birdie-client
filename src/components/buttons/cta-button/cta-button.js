@@ -3,10 +3,13 @@ import './cta-button.scss';
 const CtaButton = ({ 
     children,
     disabled,
-    onclick
+    onclick,
+    className
 }) => {
+    const classNames = ["cta-button", className].join(" ");
+
     return (
-        <button className="cta-button" 
+        <button className={ classNames }
             onClick={ onclick }
             disabled={ disabled }>
             { children }
