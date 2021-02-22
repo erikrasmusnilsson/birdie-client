@@ -1,8 +1,16 @@
-import axios from 'axios';
+import birdie from '../api/birdie';
 
 const login = async (email, password) => {
-    if (process.env.PRODUCTION) {
-        // TODO: connect to API
+    if (process.env.REACT_APP_PROD === 'true') {
+        try {
+            const response = await birdie.post('/user/login', {
+                email, password
+            });
+            if (response.status !== 200) throw new Error("Something went wrong.")
+            return response.data;
+        } catch (err) {
+            throw new Error("Problem in connecting to the api.");
+        }
     } else {
         if (email === "john@smith.com" && password === "abc123") {
             const user = {
@@ -25,8 +33,22 @@ const signup = async (
     email,
     password
 ) => {
-    if (process.env.PRODUCTION) {
-        // TODO: connect to API
+    if (process.env.REACT_APP_PROD === 'true') {
+        try {
+            const response = await birdie.post("/user/signup", {
+                firstName,
+                lastName,
+                email,
+                password,
+                description: ""
+            });
+            if (response.status !== 200) {
+                console.log(response.data);
+                throw new Error(response.data);
+            }
+        } catch (err) {
+            throw new Error("User already exists");
+        }
     } else {
         if (email === "john@smith.com") {
             throw new Error("User already exists.");

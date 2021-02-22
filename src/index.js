@@ -13,8 +13,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './store/reducer';
-
-import axios from 'axios';
 import dotenv from 'dotenv';
 
 const persistedReducer = persistReducer({
@@ -25,9 +23,9 @@ const persistedReducer = persistReducer({
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
-dotenv.config();
-
-axios.defaults.baseURL = "http://localhost:3001";
+dotenv.config({
+    path: '../.env'
+});
 
 ReactDOM.render(
     <BrowserRouter>
