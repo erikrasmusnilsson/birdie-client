@@ -1,6 +1,6 @@
 
 const getJoinedRooms = async () => {
-    if (process.env.REACT_APP_PROD) {
+    if (process.env.REACT_APP_PROD === 'true') {
         return [
             {
                 _id: "602d50163d9ab928d0bb15ea",

@@ -1,8 +1,7 @@
 import birdie from '../api/birdie';
 
 const login = async (email, password) => {
-    console.log(process.env.REACT_APP_PROD);
-    if (process.env.REACT_APP_PROD) {
+    if (process.env.REACT_APP_PROD === 'true') {
         try {
             const response = await birdie.post('/user/login', {
                 email, password
@@ -34,7 +33,7 @@ const signup = async (
     email,
     password
 ) => {
-    if (process.env.REACT_APP_PROD) {
+    if (process.env.REACT_APP_PROD === 'true') {
         try {
             const response = await birdie.post("/user/signup", {
                 firstName,
