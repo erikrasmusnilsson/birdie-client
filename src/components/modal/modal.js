@@ -16,7 +16,7 @@ const Modal = ({
         <div className={ classNames }>
             <div className="modal__content">
                 <TextButton onclick={ onclose } className="modal__close-button">
-                    <Icon icon="icon-cross" className="modal__icon-close"/>
+                    <Icon icon="icon-x" className="modal__icon-close"/>
                 </TextButton>
                 { children }
             </div>

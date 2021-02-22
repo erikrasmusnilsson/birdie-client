@@ -19,4 +19,16 @@
         color: red;
         text-align: center;
     }
+
+    &__private-box {
+        align-self: flex-end;
+    }
+
+    &__private-label {
+        margin-right: 1.5rem;
+    }
+
+    &__private-checkbox {
+        align-self: flex-end;
+    }
 }

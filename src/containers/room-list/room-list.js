@@ -14,8 +14,8 @@ const RoomList = ({ rooms, className }) => {
                 name={ room.name }
                 memberAmount={ room.members }
                 isOwner={ room.isOwner }
-                id={ room.id }
-                key={ room.id }
+                key={ room._id }
+                id={ room._id }
                 animationDelay={ animationDelay }
             />
         )

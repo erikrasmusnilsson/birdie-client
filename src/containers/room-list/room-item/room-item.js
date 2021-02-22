@@ -8,7 +8,7 @@ const RoomItem = ({
     isOwner,
     memberAmount,
     id,
-    animationDelay
+    animationDelay,
 }) => {
     const wrapperClassName = [
         "room-item",

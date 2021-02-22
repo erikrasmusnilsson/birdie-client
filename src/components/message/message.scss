@@ -4,6 +4,8 @@
     animation: slideInLeft .3s $bounceTiming;
     backface-visibility: hidden;
     display: inline-block;
+    margin: .5rem 0;
+    max-width: 50%;
 
     &__sender {
         font-size: 1rem;
@@ -14,7 +16,7 @@
 
     &__content {
         color: var(--color-grey-dark-3);
-        padding: 1rem 2.5rem;
+        padding: 1rem 2rem;
         font-size: 1.4rem;
         background-color: var(--color-grey-light-2);
         display: inline-block;
@@ -24,6 +26,7 @@
 }
 
 .message-self {
+    max-width: 50%;
     animation: slideInRight .3s cubic-bezier(1,0,0,1.6);
 
     .message__sender {
@@ -39,5 +42,6 @@
         background-color: var(--color-primary);
         border-top-left-radius: 1.4rem;
         border-top-right-radius: 0;
+        font-weight: 600;
     }
 }

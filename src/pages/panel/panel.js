@@ -5,7 +5,8 @@ import '../../sass/utilities.scss';
 import Protected from '../../hoc/protected'; 
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getJoinedRooms } from '../../services/rooms';
+import { getJoinedRooms, createRoom } from '../../services/rooms';
+import { update } from '../../services/user';
 import { TYPE_LOG_IN, TYPE_LOG_OUT } from '../../store/actions';
 
 import Header from '../../fragments/header';
@@ -21,29 +22,60 @@ const Panel = ({ user, onLogout, updateUser }) => {
 
     const [createRoomModalVisible, setCreateModalVisible] = useState(false);
     const [roomName, setRoomName] = useState('');
+    const [roomDescription, setRoomDescription] = useState('');
+    const [roomIsPrivate, setRoomIsPrivate] = useState(false);
+    const [roomPassword, setRoomPassword] = useState('');
 
     const [editingDescription, setEditingDescription] = useState(false);
     const [description, setDescription] = useState(user.description);
     
-    useEffect(async () => {
+    const getRooms = async () => {
         const joinedRooms = await getJoinedRooms();
         setJoinedRooms(joinedRooms);
-    }, []);
+    }
+
+    useEffect(getRooms, []);
 
     const logout = () => {
         onLogout();
     }
 
     const onDescriptionSave = () => {
-        const newUser = {...user};
-        newUser.description = description;
-        updateUser(newUser);
-        setEditingDescription(false);
+        try {
+            const newUser = {...user};
+            newUser.description = description;
+            update(
+                newUser.firstName,
+                newUser.lastName,
+                newUser.description
+            );
+            updateUser(newUser);
+            setEditingDescription(false);
+        } catch (err) {
+            alert(err.message);
+        }
     }
 
     const onDescriptionCancel = () => {
         setDescription(user.description);
         setEditingDescription(false);
+    }
+
+    const onCreateRoom = async () => {
+        createRoom(
+            roomName,
+            setRoomDescription,
+            roomIsPrivate,
+            roomPassword
+        );
+        setCreateModalVisible(false);
+        setRoomName('');
+        setRoomDescription('');
+        setRoomIsPrivate(false);
+        setRoomPassword('');
+        setTimeout(() => {
+            getRooms();
+        }, 300);
     }
  
     return (
@@ -59,6 +91,13 @@ const Panel = ({ user, onLogout, updateUser }) => {
                     onclose={ () => setCreateModalVisible(false) }
                     roomName={ roomName }
                     setRoomName={ setRoomName }
+                    roomDescription={ roomDescription }
+                    setRoomDescription={ setRoomDescription }
+                    roomIsPrivate={ roomIsPrivate }
+                    setRoomIsPrivate={ setRoomIsPrivate }
+                    roomPassword={ roomPassword }
+                    setRoomPassword={ setRoomPassword }
+                    onCreateRoom={ onCreateRoom }
                 />
                 <Header 
                     firstName={ user.firstName } 

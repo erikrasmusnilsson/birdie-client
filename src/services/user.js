@@ -5,6 +5,8 @@ const login = async (email, password) => {
         try {
             const response = await birdie.post('/user/login', {
                 email, password
+            }, {
+                withCredentials: true
             });
             if (response.status !== 200) throw new Error("Something went wrong.")
             return response.data;
@@ -57,4 +59,31 @@ const signup = async (
     }
 }
 
-export { login, signup };
+const update = async (
+    firstName,
+    lastName,
+    description,
+    password
+) => {
+    if (process.env.REACT_APP_PROD === 'true') {
+        try {
+            const response = await birdie.put("/user/update", {
+                firstName,
+                lastName,
+                description
+            }, {
+                withCredentials: true
+            });
+
+            console.log(response.status, "status");
+            console.log(response.data, "data")
+        } catch (err) {
+            console.log(err);
+            throw new Error("Error when communicating with server.");
+        }
+    } else {
+        return;
+    }
+}
+
+export { login, signup, update };

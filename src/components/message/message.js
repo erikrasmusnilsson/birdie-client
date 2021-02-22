@@ -12,7 +12,7 @@ const Message = ({
 
     return (
         <div className={ classNames }>
-            <span className="message__sender">{ sender }</span>
+            { self ? null : <span className="message__sender">{ sender }</span> }
             <p className="message__content">{ content }</p>
         </div>
     );

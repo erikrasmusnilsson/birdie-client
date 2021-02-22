@@ -1,0 +1,10 @@
+.chat {
+    &__content {
+        position: relative;
+    }
+
+    &__chat-profile {
+        position: absolute;
+        z-index: 1000;
+    }
+}
