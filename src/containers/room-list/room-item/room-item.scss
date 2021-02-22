@@ -1,30 +1,31 @@
-.room-list {
-    list-style-type: none;
+@import '../../../sass/animations.scss';
 
-    &__item {
-        display: flex;
-        align-items: center;
-        transition: all .2s;
-        backface-visibility: hidden;
-        padding: 0 1.5rem;
-
-
-        &:hover {
-            transform: translateX(3rem);
-        }
-        
-        &:not(:last-child) {
-            padding-bottom: 2.5rem;
-        }
-    }
-
-    &__item:hover &__delete-button {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
+.room-item {
+    display: flex;
+    align-items: center;
+    transition: all .2s;
+    backface-visibility: hidden;
+    padding: 0 1.5rem;
+    
+    &:not(:last-child) {
+        padding-bottom: 2.5rem;
     }
 
     &__title {
         position: relative;
+    }
+
+    &__owner-title {
+        transition: all .3s;
+    }
+
+    &:hover &__owner-title {
+        transform: translateX(3rem);
+    }
+
+    &:hover &__delete-button {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
     }
 
     &__owner {
@@ -80,8 +81,14 @@
     }
 
     &__delete-icon {
-        width: .8rem;
-        height: .8rem;
+        width: 1.2rem;
+        height: 1.2rem;
         fill: white;
     }
+}
+
+.room-item-animated {
+    animation: slideInBottom .5s ease forwards;
+    transform: translateY(12.8rem);
+    opacity: 0;
 }

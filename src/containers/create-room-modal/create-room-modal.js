@@ -18,7 +18,7 @@ const CreateRoomModal = ({
                 <h2 className="create-room__title u-margin-bottom-medium">Let's chat!</h2>
                 <TextInput 
                     placeholder="Room name"
-                    icon="icon-pencil"
+                    icon="icon-edit-2"
                     value={ roomName }
                     onchange={ setRoomName }
                     required
@@ -28,7 +28,6 @@ const CreateRoomModal = ({
                 />
                 <TextArea 
                     placeholder="Room description"
-                    icon="icon-pencil"
                     value={ roomName }
                     onchange={ setRoomName }
                     required

@@ -1,3 +1,5 @@
+@import '../../sass/animations.scss';
+
 .header {
     display: flex;
     align-items: center;
@@ -12,11 +14,19 @@
     display: flex;
     align-items: center;
 
+    animation: slideInLeft .5s forwards;
+    transform: translateX(-12.8rem);
+    opacity: 0;
+
     &__text {
         margin-left: 1rem;
+        animation: slideInLeft .5s forwards;
     }
 
     &__welcome {
         margin-bottom: 0 !important;
+        animation: slideInLeft .5s .25s forwards;
+        transform: translateX(-12.8rem);
+        opacity: 0;
     }
 }

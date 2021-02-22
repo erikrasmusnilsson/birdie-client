@@ -10,10 +10,13 @@ const Header = ({
     firstName,
     lastName,
     searchQuery,
-    setSearchQuery
+    setSearchQuery,
+    className
 }) => {
+    const classNames = ["header", className].join(" ");
+
     return (
-        <section className="header u-margin-top-medium">
+        <section className={ classNames }>
             <div className="profile">
                 <Avatar src={ img } online story/>
                 <div className="profile__text">
@@ -22,7 +25,7 @@ const Header = ({
                 </div>
             </div>
             <TextInput 
-                icon="icon-cool2"
+                icon="icon-search"
                 placeholder="Search for a room to join..."
                 required
                 className="header__search"

@@ -1,8 +1,10 @@
+@import '../../../sass/gradients.scss';
+
 .cta-button {
     padding: 1rem 2rem;
     color: white;
     background-color: var(--color-primary);
-    background-image: linear-gradient(to right bottom, var(--color-primary-dark), var(--color-primary-light));
+    background-image: $gradient-to-right;
     border: none;
     border-radius: 300rem;
     font-weight: 600;

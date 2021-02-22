@@ -28,14 +28,14 @@ const LoginModal = ({
                     onchange={ setemail } 
                     required 
                     className="u-margin-bottom-small"
-                    icon="icon-user" />
+                    icon="icon-at-sign" />
                 <PasswordInput placeholder='Password'
                     value={ password }
                     onchange={ setpassword } 
                     required
                     min={ 6 }
                     className="u-margin-bottom-medium"
-                    icon="icon-key" />
+                    icon="icon-unlock" />
                 <PrimaryButton onclick={ onlogin } className="login__login-button">Log in</PrimaryButton>
                 <TextButton onclick={ onsignup } className="login__signup-button">or sign up here</TextButton>
             </div>

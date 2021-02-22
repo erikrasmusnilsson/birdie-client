@@ -48,7 +48,7 @@ const SignUp = ({
                     <TextInput 
                         className="u-margin-bottom-small"
                         placeholder="Email" 
-                        icon="icon-user" 
+                        icon="icon-at-sign" 
                         required
                         value={ email }
                         onchange={ setemail }    
@@ -57,7 +57,7 @@ const SignUp = ({
                         <PasswordInput 
                             className="u-margin-bottom-small"
                             placeholder="Password" 
-                            icon="icon-key" 
+                            icon="icon-unlock" 
                             required 
                             min={6} 
                             value={ password }
@@ -66,7 +66,7 @@ const SignUp = ({
                         <PasswordInput 
                             className="u-margin-bottom-small"
                             placeholder="Repeat password"
-                            icon="icon-key"
+                            icon="icon-unlock"
                             required
                             min={ 6 }
                             value={ confirmpassword }

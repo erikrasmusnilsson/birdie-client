@@ -1,7 +1,6 @@
 @import '../../sass/animations.scss';
 
 .user-profile {
-    margin-top: 4rem;
     position: relative;
 
     &__edit-button {
@@ -13,8 +12,8 @@
     }
 
     &__edit-icon {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         fill: var(--color-grey-dark-2);
     }
 
@@ -31,23 +30,5 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-    }
-
-    &__save-button {
-        align-self: flex-end;
-        padding: 1rem 3rem;
-    }
-
-    &__controls {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
-
-    &__description-input {
-        margin-top: 1rem;
-        transform: scale(0);
-        opacity: 0;
-        animation: popIn .5s forwards;
     }
 }

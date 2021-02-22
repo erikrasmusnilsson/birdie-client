@@ -3,24 +3,35 @@
     flex-direction: column;
 
     &__create-room-button {
-        align-self: flex-start;
-        padding: 1rem 2.5rem;
-    }
+        align-self: flex-end;
+        width: 3.5rem;
+        height: 3.5rem;
+        padding: 0;
+        margin-right: 1.5rem;
 
-    &__logout-button {
-        position: fixed;
-        top: 0;
-        right: 0;
-        
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
+    &__create-room-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: white;
+    }
+
+    &__logout-button {
+        align-self: flex-end;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
     &__logout-icon {
         width: 1.5rem;
         height: 1.5rem;
-        margin-right: 1rem;
         fill: var(--color-primary);
         transform: translateY(.3rem);
     }

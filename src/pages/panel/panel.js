@@ -10,10 +10,10 @@ import { TYPE_LOG_IN, TYPE_LOG_OUT } from '../../store/actions';
 
 import Header from '../../fragments/header';
 import UserProfile from '../../fragments/user-profile';
-import RoomList from '../../fragments/room-list';
+import RoomList from '../../containers/room-list';
 import CreateRoomModal from '../../containers/create-room-modal';
 import Icon from '../../components/icon';
-import { TextButton, SubtleButton } from '../../components/buttons';
+import { TextButton, PrimaryButton } from '../../components/buttons';
 
 const Panel = ({ user, onLogout, updateUser }) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -40,15 +40,18 @@ const Panel = ({ user, onLogout, updateUser }) => {
         updateUser(newUser);
         setEditingDescription(false);
     }
+
+    const onDescriptionCancel = () => {
+        setDescription(user.description);
+        setEditingDescription(false);
+    }
  
     return (
         <Protected>
             <main className="row panel">
-                <img className="panel__logo u-margin-top-medium" src={`${process.env.PUBLIC_URL}/images/logo-color.png`} alt="Logo" />
-                <div className="panel__logout-button">
+                <div className="panel__logout-button u-margin-top-small">
                     <TextButton onclick={ logout }>
-                        <Icon icon="icon-heart-broken" className="panel__logout-icon" />
-                        Log out
+                        <Icon icon="icon-log-out" className="panel__logout-icon" />
                     </TextButton>
                 </div>
                 <CreateRoomModal 
@@ -60,24 +63,28 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 <Header 
                     firstName={ user.firstName } 
                     lastName={ user.lastName } 
-                    //img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
-                    img={ `https://i.imgur.com/T65roqH.gif` } 
+                    img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
                     searchQuery={ searchQuery }
                     setSearchQuery={ setSearchQuery }
                 />
                 <UserProfile 
+                    className="u-margin-top-medium"
                     description={ description } 
                     setDescription={ setDescription }
                     edit={ editingDescription }
                     onStartEdit={ () => setEditingDescription(true) }
-                    onCancel={ () => setEditingDescription(false) }
+                    onCancel={ onDescriptionCancel }
                     onSave={ onDescriptionSave }
                 />
-                <SubtleButton 
-                    className="u-margin-top-small u-margin-bottom-small panel__create-room-button"
-                    onclick={ () => setCreateModalVisible(true) }
-                >Create room</SubtleButton>
-                <RoomList rooms={ joinedRooms } />
+                <PrimaryButton 
+                    className="panel__create-room-button u-margin-top-small"
+                    onclick={ () => setCreateModalVisible(true) }>
+                    <Icon className="panel__create-room-icon" icon="icon-plus" />
+                </PrimaryButton>
+                <RoomList 
+                    className="u-margin-top-small"
+                    rooms={ joinedRooms } 
+                />
             </main>
         </Protected>
     )
