@@ -10,7 +10,8 @@ const PasswordInput = ({
     min,
     max,
     className,
-    icon
+    icon,
+    disabled
 }) => {
     const classNames = [
         "password-input-box", 
@@ -36,7 +37,8 @@ const PasswordInput = ({
                 required={ required }
                 minLength={ min }
                 maxLength={ max } 
-                type='password'/>
+                type='password'
+                disabled={ disabled } />
             <span className="password-input-box__placeholder">{ placeholder }</span>
             <span className="password-input-box__counter">{ counter }</span>
             { icon ? <Icon icon={ icon } className="password-input-box__icon" /> : null }

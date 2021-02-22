@@ -10,7 +10,8 @@ const TextInput = ({
     min,
     max,
     className,
-    icon
+    icon,
+    disabled
 }) => {
     const classNames = [
         "text-input-box", 
@@ -35,7 +36,8 @@ const TextInput = ({
                 value={ value }
                 required={ required }
                 minLength={ min }
-                maxLength={ max } />
+                maxLength={ max }
+                disabled={ disabled } />
             <span className="text-input-box__placeholder">{ placeholder }</span>
             <span className="text-input-box__counter">{ counter }</span>
             { icon ? <Icon icon={ icon } className="text-input-box__icon" /> : null }

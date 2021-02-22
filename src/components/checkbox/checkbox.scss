@@ -1,0 +1,42 @@
+.checkbox {
+    display: flex;
+    align-items: center;
+
+    &__input {
+        display: none;
+    }
+
+    &__label {
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        border: .4rem solid var(--color-primary);
+        border-radius: 50%;
+        position: relative;
+    }
+
+    &__user-label {
+        margin-right: 1.5rem;
+        color: var(--color-grey-dark-3);
+    }
+
+    &__label::before {
+        content: "";
+        width: 1.3rem;
+        height: 1.3rem;
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: transform .3s cubic-bezier(1,0,.26, 2), opacity .3s;
+        background-color: var(--color-primary-dark);
+        border-radius: 50%;
+    }
+
+    &__input:checked ~ &__label::before {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

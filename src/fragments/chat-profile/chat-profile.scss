@@ -1,0 +1,30 @@
+.chat-profile {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    box-shadow: 0 1.5rem 3rem rgba(#000, .05);
+    width: 100%;
+    padding: 2.5rem 3rem;
+    border-bottom-left-radius: 1.6rem;
+    border-bottom-right-radius: 1.6rem;
+
+    &__title,
+    &__description {
+        color: var(--color-grey-dark-2);
+    }
+
+    &__edit-button {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        display: inline-block;
+        padding: 1rem !important;
+    }
+
+    &__edit-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--color-grey-dark-2);
+    }
+}
