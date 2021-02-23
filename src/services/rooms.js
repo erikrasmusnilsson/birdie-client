@@ -61,7 +61,7 @@ const createRoom = async (
             isPrivate
         };
         if (isPrivate) payload.password = password;
-        await birdie.post("/chat", payload, {
+        await birdie.post("/room", payload, {
             withCredentials: true
         });
     } else {
@@ -71,7 +71,7 @@ const createRoom = async (
 
 const getRoomById = async id => {
     if (process.env.REACT_APP_PROD) {
-        const response = await birdie.get(`/chat/${id}`, {
+        const response = await birdie.get(`/room/${id}`, {
             withCredentials: true
         });
         return response.data;
@@ -82,7 +82,7 @@ const getRoomById = async id => {
 
 const deleteRoom = async id => {
     if (process.env.REACT_APP_PROD) {
-        await birdie.delete(`/chat/${id}`, {
+        await birdie.delete(`/room/${id}`, {
             withCredentials: true
         });
     } else {
@@ -92,7 +92,7 @@ const deleteRoom = async id => {
 
 const updateRoom = async (id, description) => {
     if (process.env.REACT_APP_PROD) {
-        await birdie.put(`/chat/${id}`, {
+        await birdie.put(`/room/${id}`, {
             description
         }, {
             withCredentials: true
