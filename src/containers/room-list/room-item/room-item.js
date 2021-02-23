@@ -9,6 +9,8 @@ const RoomItem = ({
     memberAmount,
     id,
     animationDelay,
+    onDelete,
+    onJoin,
 }) => {
     const wrapperClassName = [
         "room-item",
@@ -31,13 +33,13 @@ const RoomItem = ({
                 }
                 { 
                     isOwner 
-                    ? <SubtleButton className="room-item__delete-button"><Icon className="room-item__delete-icon" icon="icon-x" /></SubtleButton>
+                    ? <SubtleButton className="room-item__delete-button" onclick={ () => onDelete(id) }><Icon className="room-item__delete-icon" icon="icon-x" /></SubtleButton>
                     : null 
                 }
             </div>
             <div className="room-item__controls">
                 <p className="room-item__users">{ memberAmount } room members</p>
-                <SubtleButton className="room-item__join-button">Join</SubtleButton>
+                <SubtleButton className="room-item__join-button" onclick={ () => onJoin(id) }>Join</SubtleButton>
             </div>
         </li>
     )

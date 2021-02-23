@@ -4,8 +4,11 @@ import '../../sass/utilities.scss';
 
 import Protected from '../../hoc/protected'; 
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getJoinedRooms, createRoom } from '../../services/rooms';
+
+import { createRoom } from '../../services/rooms';
+import useJoinedRooms from '../../hooks/useJoinedRooms';
 import { update } from '../../services/user';
 import { TYPE_LOG_IN, TYPE_LOG_OUT } from '../../store/actions';
 
@@ -17,8 +20,10 @@ import Icon from '../../components/icon';
 import { TextButton, PrimaryButton } from '../../components/buttons';
 
 const Panel = ({ user, onLogout, updateUser }) => {
+    const history = useHistory();
+
     const [searchQuery, setSearchQuery] = useState('');
-    const [joinedRooms, setJoinedRooms] = useState([]);
+    const [joinedRooms, refreshRooms, deleteRoom] = useJoinedRooms();
 
     const [createRoomModalVisible, setCreateModalVisible] = useState(false);
     const [roomName, setRoomName] = useState('');
@@ -28,13 +33,6 @@ const Panel = ({ user, onLogout, updateUser }) => {
 
     const [editingDescription, setEditingDescription] = useState(false);
     const [description, setDescription] = useState(user.description);
-    
-    const getRooms = async () => {
-        const joinedRooms = await getJoinedRooms();
-        setJoinedRooms(joinedRooms);
-    }
-
-    useEffect(getRooms, []);
 
     const logout = () => {
         onLogout();
@@ -64,7 +62,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
     const onCreateRoom = async () => {
         createRoom(
             roomName,
-            setRoomDescription,
+            roomDescription,
             roomIsPrivate,
             roomPassword
         );
@@ -74,8 +72,12 @@ const Panel = ({ user, onLogout, updateUser }) => {
         setRoomIsPrivate(false);
         setRoomPassword('');
         setTimeout(() => {
-            getRooms();
+            refreshRooms();
         }, 300);
+    }
+
+    const onJoinRoom = id => {
+        history.push(`/chat/${id}`);
     }
  
     return (
@@ -123,6 +125,8 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 <RoomList 
                     className="u-margin-top-small"
                     rooms={ joinedRooms } 
+                    onDeleteRoom={ deleteRoom }
+                    onJoinRoom={ onJoinRoom }
                 />
             </main>
         </Protected>

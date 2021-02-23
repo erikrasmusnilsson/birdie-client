@@ -3,7 +3,12 @@ import '../../sass/utilities.scss';
 
 import RoomItem from './room-item';
 
-const RoomList = ({ rooms, className }) => {
+const RoomList = ({ 
+    rooms, 
+    className, 
+    onDeleteRoom,
+    onJoinRoom
+}) => {
     const classNames = ["room-list", className].join(" ");
 
     let animationDelay = 0;
@@ -17,6 +22,8 @@ const RoomList = ({ rooms, className }) => {
                 key={ room._id }
                 id={ room._id }
                 animationDelay={ animationDelay }
+                onDelete={ onDeleteRoom }
+                onJoin={ onJoinRoom }
             />
         )
     });

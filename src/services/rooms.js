@@ -69,4 +69,37 @@ const createRoom = async (
     }
 }
 
-export { getJoinedRooms, createRoom };
+const getRoomById = async id => {
+    if (process.env.REACT_APP_PROD) {
+        const response = await birdie.get(`/chat/${id}`, {
+            withCredentials: true
+        });
+        return response.data;
+    } else {
+
+    }
+}
+
+const deleteRoom = async id => {
+    if (process.env.REACT_APP_PROD) {
+        await birdie.delete(`/chat/${id}`, {
+            withCredentials: true
+        });
+    } else {
+
+    }
+}
+
+const updateRoom = async (id, description) => {
+    if (process.env.REACT_APP_PROD) {
+        await birdie.put(`/chat/${id}`, {
+            description
+        }, {
+            withCredentials: true
+        });
+    } else {
+
+    }
+}
+
+export { getJoinedRooms, createRoom, getRoomById, deleteRoom, updateRoom };

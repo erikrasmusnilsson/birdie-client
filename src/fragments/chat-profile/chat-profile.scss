@@ -1,18 +1,7 @@
+@import '../../sass/animations.scss';
+
 .chat-profile {
-    display: flex;
-    flex-direction: column;
-
-    background-color: white;
-    box-shadow: 0 1.5rem 3rem rgba(#000, .05);
-    width: 100%;
-    padding: 2.5rem 3rem;
-    border-bottom-left-radius: 1.6rem;
-    border-bottom-right-radius: 1.6rem;
-
-    &__title,
-    &__description {
-        color: var(--color-grey-dark-2);
-    }
+    position: relative;
 
     &__edit-button {
         position: absolute;
@@ -26,5 +15,24 @@
         width: 1.5rem;
         height: 1.5rem;
         fill: var(--color-grey-dark-2);
+    }
+
+    &__title {
+        color: var(--color-grey-dark-2);
+    }
+
+    &__description {
+        line-height: 1.5;
+        margin-top: 1rem;
+        opacity: 0;
+        animation: fadeIn .5s forwards ease-out;
+    }
+
+    &__content {
+        transition: all .2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
     }
 }
