@@ -12,6 +12,8 @@
         background-color: white;
         width: 100%;
         z-index: 1500;
-        border-radius: 1.6rem;
+        overflow: scroll;
+        max-height: 20rem;
+        filter: drop-shadow(0 1.5rem 3rem rgba(#000, .05));
     }
 }

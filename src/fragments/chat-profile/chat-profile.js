@@ -1,10 +1,9 @@
 import './chat-profile.scss';
 
-import { TextButton, SubtleButton } from '../../components/buttons';
+import { TextButton } from '../../components/buttons';
 import Icon from '../../components/icon';
 import ShadowBox from '../../components/shadow-box';
 import EditMode from './edit-mode';
-import TextArea from '../../components/text-area';
 
 const ChatProfile = ({
     title,
@@ -18,11 +17,11 @@ const ChatProfile = ({
     isOwner
 }) => {
     const classNames = ["chat-profile", className].join(" ");
-
+    console.log("isOwner", isOwner);
     return (
         <ShadowBox className={ classNames }>
             <h3 className="chat-profile__title">{ title ? title : "Loading..." }</h3>
-            { edit ? (
+            { edit && isOwner ? (
                 <EditMode 
                     description={ description }
                     setDescription={ setDescription }
@@ -32,9 +31,12 @@ const ChatProfile = ({
             ) : (
                 <div className="chat-profile__content">
                     <p className="chat-profile__description">{ description }</p>
-                    <TextButton onclick={ onStartEdit } className="chat-profile__edit-button">
-                        <Icon icon="icon-edit-2" className="chat-profile__edit-icon" />  
-                    </TextButton>
+                    { isOwner ? (
+                        <TextButton onclick={ onStartEdit } className="chat-profile__edit-button">
+                            <Icon icon="icon-edit-2" className="chat-profile__edit-icon" />  
+                        </TextButton>
+                        ) : null
+                    }
                 </div>
             )}
         </ShadowBox>

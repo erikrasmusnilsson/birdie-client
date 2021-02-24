@@ -58,65 +58,7 @@ const Chat = () => {
         {
             sender: "Rasmus Nilsson",
             content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?",
-            self: true
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?",
-            self: true
-        },
+        }
     ];
 
     return (
