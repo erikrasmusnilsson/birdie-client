@@ -102,4 +102,17 @@ const updateRoom = async (id, description) => {
     }
 }
 
-export { getJoinedRooms, createRoom, getRoomById, deleteRoom, updateRoom };
+const searchRoomByName = async name => {
+    if (process.env.REACT_APP_PROD) {
+        console.log("query: ", name)
+        const response = await birdie.get(`/room/search/${name}`, {
+            withCredentials: true
+        });
+        console.log("data: ", response.data);
+        return response.data;
+    } else {
+
+    }
+}
+
+export { getJoinedRooms, createRoom, getRoomById, deleteRoom, updateRoom, searchRoomByName };

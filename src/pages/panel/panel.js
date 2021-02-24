@@ -3,11 +3,11 @@ import '../../sass/grid.scss';
 import '../../sass/utilities.scss';
 
 import Protected from '../../hoc/protected'; 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { createRoom } from '../../services/rooms';
+import { createRoom, searchRoomByName } from '../../services/rooms';
 import useJoinedRooms from '../../hooks/useJoinedRooms';
 import { update } from '../../services/user';
 import { TYPE_LOG_IN, TYPE_LOG_OUT } from '../../store/actions';
@@ -18,11 +18,13 @@ import RoomList from '../../containers/room-list';
 import CreateRoomModal from '../../containers/create-room-modal';
 import Icon from '../../components/icon';
 import { TextButton, PrimaryButton } from '../../components/buttons';
+import { queryByLabelText } from '@testing-library/react';
 
 const Panel = ({ user, onLogout, updateUser }) => {
     const history = useHistory();
 
     const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
     const [joinedRooms, refreshRooms, deleteRoom] = useJoinedRooms();
 
     const [createRoomModalVisible, setCreateModalVisible] = useState(false);
@@ -79,6 +81,15 @@ const Panel = ({ user, onLogout, updateUser }) => {
     const onJoinRoom = id => {
         history.push(`/chat/${id}`);
     }
+
+    const onSearch = async (query) => {
+        setSearchQuery(query);
+        if (query.length > 3) {
+            setSearchResults(await searchRoomByName(query));
+        } else {
+            setSearchResults([]);
+        }
+    }
  
     return (
         <Protected>
@@ -106,7 +117,8 @@ const Panel = ({ user, onLogout, updateUser }) => {
                     lastName={ user.lastName } 
                     img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
                     searchQuery={ searchQuery }
-                    setSearchQuery={ setSearchQuery }
+                    setSearchQuery={ onSearch }
+                    searchResults={ searchResults }
                 />
                 <UserProfile 
                     className="u-margin-top-medium"
