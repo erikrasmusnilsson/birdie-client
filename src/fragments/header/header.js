@@ -12,6 +12,7 @@ const Header = ({
     searchQuery,
     setSearchQuery,
     searchResults,
+    onSubscribeToRoom,
     className
 }) => {
     const classNames = ["header", className].join(" ");
@@ -29,6 +30,7 @@ const Header = ({
                 query={ searchQuery }
                 setQuery={ setSearchQuery }
                 results={ searchResults }
+                onSubscribe={ onSubscribeToRoom }
             />
         </section>
     )

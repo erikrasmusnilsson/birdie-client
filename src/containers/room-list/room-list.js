@@ -24,6 +24,7 @@ const RoomList = ({
                 animationDelay={ animationDelay }
                 onDelete={ onDeleteRoom }
                 onJoin={ onJoinRoom }
+                isPrivate={ room.isPrivate }
             />
         )
     });

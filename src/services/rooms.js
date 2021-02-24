@@ -104,15 +104,48 @@ const updateRoom = async (id, description) => {
 
 const searchRoomByName = async name => {
     if (process.env.REACT_APP_PROD) {
-        console.log("query: ", name)
         const response = await birdie.get(`/room/search/${name}`, {
             withCredentials: true
         });
-        console.log("data: ", response.data);
         return response.data;
     } else {
 
     }
 }
 
-export { getJoinedRooms, createRoom, getRoomById, deleteRoom, updateRoom, searchRoomByName };
+const subscribeToRoom = async id => {
+    if (process.env.REACT_APP_PROD) {
+        await birdie.post(`/room/${id}/subscribe`, {}, {
+            withCredentials: true
+        });
+    } else {
+
+    }
+}
+
+const subscribeToRoomWithPassword = async (id, password) => {
+    if (process.env.REACT_APP_PROD) {
+        try {
+            await birdie.post(`/room/${id}/subscribe`, {
+                password
+            }, {
+                withCredentials: true
+            });
+        } catch (err) {
+            throw new Error("Please provide the correct password");
+        }
+    } else {
+        
+    }
+}
+
+export { 
+    getJoinedRooms, 
+    createRoom, 
+    getRoomById, 
+    deleteRoom, 
+    updateRoom, 
+    searchRoomByName,
+    subscribeToRoom,
+    subscribeToRoomWithPassword,
+};

@@ -6,7 +6,8 @@ import SearchResult from '../search-result';
 const Search = ({
     query,
     setQuery,
-    results
+    results,
+    onSubscribe
 }) => {
     const rooms = (results !== null && results.length > 0) ? results.map(room => {
         return (
@@ -16,6 +17,7 @@ const Search = ({
                     ownerName={ room.ownerName } 
                     isPrivate={ room.isPrivate }
                     id={ room._id }
+                    onSubscribe={ onSubscribe }
                 />
             </li>
         )
