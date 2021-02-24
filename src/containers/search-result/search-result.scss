@@ -1,0 +1,25 @@
+
+.search-result {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+
+    &__names {
+        margin-right: auto;
+    }
+
+    &__room-name {
+        color: var(--color-grey-dark-2);
+    }
+
+    &__owner-name {
+        font-size: 1rem;
+    }
+
+    &__private-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: var(--color-grey-dark-2);
+        margin-right: .25rem;
+    }
+}

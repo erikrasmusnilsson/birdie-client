@@ -3,7 +3,7 @@ import '../../sass/utilities.scss';
 
 import Avatar from '../../components/avatar';
 import TertiaryHeading from '../../components/headings/tertiary-heading';
-import TextInput from '../../components/text-input';
+import Search from '../../containers/search';
 
 const Header = ({
     img,
@@ -11,6 +11,8 @@ const Header = ({
     lastName,
     searchQuery,
     setSearchQuery,
+    searchResults,
+    onSubscribeToRoom,
     className
 }) => {
     const classNames = ["header", className].join(" ");
@@ -24,13 +26,11 @@ const Header = ({
                     <TertiaryHeading>{ `${firstName} ${lastName}` }</TertiaryHeading>
                 </div>
             </div>
-            <TextInput 
-                icon="icon-search"
-                placeholder="Search for a room to join..."
-                required
-                className="header__search"
-                value={ searchQuery }
-                onchange={ setSearchQuery }
+            <Search 
+                query={ searchQuery }
+                setQuery={ setSearchQuery }
+                results={ searchResults }
+                onSubscribe={ onSubscribeToRoom }
             />
         </section>
     )

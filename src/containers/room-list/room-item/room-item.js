@@ -11,6 +11,7 @@ const RoomItem = ({
     animationDelay,
     onDelete,
     onJoin,
+    isPrivate
 }) => {
     const wrapperClassName = [
         "room-item",
@@ -39,6 +40,7 @@ const RoomItem = ({
             </div>
             <div className="room-item__controls">
                 <p className="room-item__users">{ memberAmount } room members</p>
+                { isPrivate ? <Icon icon="icon-unlock" className="room-item__private-icon" /> : null }
                 <SubtleButton className="room-item__join-button" onclick={ () => onJoin(id) }>Join</SubtleButton>
             </div>
         </li>

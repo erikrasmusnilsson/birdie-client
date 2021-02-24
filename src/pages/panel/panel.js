@@ -3,11 +3,11 @@ import '../../sass/grid.scss';
 import '../../sass/utilities.scss';
 
 import Protected from '../../hoc/protected'; 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { createRoom } from '../../services/rooms';
+import { createRoom, searchRoomByName, subscribeToRoom, subscribeToRoomWithPassword } from '../../services/rooms';
 import useJoinedRooms from '../../hooks/useJoinedRooms';
 import { update } from '../../services/user';
 import { TYPE_LOG_IN, TYPE_LOG_OUT } from '../../store/actions';
@@ -16,6 +16,7 @@ import Header from '../../fragments/header';
 import UserProfile from '../../fragments/user-profile';
 import RoomList from '../../containers/room-list';
 import CreateRoomModal from '../../containers/create-room-modal';
+import RoomPasswordModal from '../../containers/room-password-modal';
 import Icon from '../../components/icon';
 import { TextButton, PrimaryButton } from '../../components/buttons';
 
@@ -23,6 +24,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
     const history = useHistory();
 
     const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
     const [joinedRooms, refreshRooms, deleteRoom] = useJoinedRooms();
 
     const [createRoomModalVisible, setCreateModalVisible] = useState(false);
@@ -33,6 +35,11 @@ const Panel = ({ user, onLogout, updateUser }) => {
 
     const [editingDescription, setEditingDescription] = useState(false);
     const [description, setDescription] = useState(user.description);
+
+    const [roomPasswordModalVisible, setRoomPasswordModalVisible] = useState(false);
+    const [joinRoomPassword, setJoinRoomPassword] = useState('');
+    const [joinRoomId, setJoinRoomId] = useState(null);
+    const [roomPasswordPrompt, setRoomPasswordPrompt] = useState(null);
 
     const logout = () => {
         onLogout();
@@ -60,7 +67,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
     }
 
     const onCreateRoom = async () => {
-        createRoom(
+        await createRoom(
             roomName,
             roomDescription,
             roomIsPrivate,
@@ -78,6 +85,39 @@ const Panel = ({ user, onLogout, updateUser }) => {
 
     const onJoinRoom = id => {
         history.push(`/chat/${id}`);
+    }
+
+    const onSearch = async (query) => {
+        setSearchQuery(query);
+        if (query.length > 3) {
+            setSearchResults(await searchRoomByName(query));
+        } else {
+            setSearchResults([]);
+        }
+    }
+
+    const onSubscribeToRoom = async (id, isPrivate) => {
+        if (isPrivate) {
+            setRoomPasswordModalVisible(true);
+            setJoinRoomId(id);
+        } else {
+            await subscribeToRoom(id);
+            setTimeout(() => {
+                refreshRooms();
+            }, 300);
+        }
+    }
+
+    const onSubscribeToRoomWithPassword = async (id, password) => {
+        try {
+            await subscribeToRoomWithPassword(id, password);
+            setTimeout(() => {
+                refreshRooms();
+            }, 300);
+            setRoomPasswordModalVisible(false);
+        } catch (err) {
+            setRoomPasswordPrompt(err.message);
+        }
     }
  
     return (
@@ -106,7 +146,18 @@ const Panel = ({ user, onLogout, updateUser }) => {
                     lastName={ user.lastName } 
                     img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
                     searchQuery={ searchQuery }
-                    setSearchQuery={ setSearchQuery }
+                    setSearchQuery={ onSearch }
+                    searchResults={ searchResults }
+                    onSubscribeToRoom={ onSubscribeToRoom }
+                />
+                <RoomPasswordModal 
+                    visible={ roomPasswordModalVisible }
+                    onClose={ () => setRoomPasswordModalVisible(false) }
+                    password={ joinRoomPassword }
+                    setPassword={ setJoinRoomPassword }
+                    onSubscribeToRoom={ onSubscribeToRoomWithPassword }
+                    roomId={ joinRoomId }
+                    prompt={ roomPasswordPrompt }
                 />
                 <UserProfile 
                     className="u-margin-top-medium"
