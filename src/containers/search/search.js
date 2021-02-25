@@ -9,7 +9,7 @@ const Search = ({
     results,
     onSubscribe
 }) => {
-    const rooms = (results !== null && results.length > 0) ? results.map(room => {
+    const rooms = (results && results.length > 0) ? results.map(room => {
         return (
             <li className="search__result" key={ room._id }>
                 <SearchResult 
