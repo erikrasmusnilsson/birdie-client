@@ -6,9 +6,11 @@ import Protected from '../../hoc/protected';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import useTimeRestrictedSearch from '../../hooks/useTimeRestrictedSearch';
 
-import { createRoom, searchRoomByName, subscribeToRoom, subscribeToRoomWithPassword } from '../../services/rooms';
+import { createRoom, subscribeToRoom, subscribeToRoomWithPassword } from '../../services/rooms';
 import useJoinedRooms from '../../hooks/useJoinedRooms';
+import * as CreateRoomForm from '../../hooks/useCreateRoomForm';
 import { update } from '../../services/user';
 import { TYPE_LOG_IN, TYPE_LOG_OUT } from '../../store/actions';
 
@@ -28,10 +30,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
     const [joinedRooms, refreshRooms, deleteRoom] = useJoinedRooms();
 
     const [createRoomModalVisible, setCreateModalVisible] = useState(false);
-    const [roomName, setRoomName] = useState('');
-    const [roomDescription, setRoomDescription] = useState('');
-    const [roomIsPrivate, setRoomIsPrivate] = useState(false);
-    const [roomPassword, setRoomPassword] = useState('');
+    const [createRoomForm, createRoomDispatch, resetCreateRoomForm] = CreateRoomForm.useCreateRoomForm();
 
     const [editingDescription, setEditingDescription] = useState(false);
     const [description, setDescription] = useState(user.description);
@@ -41,15 +40,21 @@ const Panel = ({ user, onLogout, updateUser }) => {
     const [joinRoomId, setJoinRoomId] = useState(null);
     const [roomPasswordPrompt, setRoomPasswordPrompt] = useState(null);
 
+    useTimeRestrictedSearch({
+        query: searchQuery,
+        setResults: setSearchResults,
+        url: '/room/search'
+    });
+
     const logout = () => {
         onLogout();
     }
 
-    const onDescriptionSave = () => {
+    const onDescriptionSave = async () => {
         try {
             const newUser = {...user};
             newUser.description = description;
-            update(
+            await update(
                 newUser.firstName,
                 newUser.lastName,
                 newUser.description
@@ -68,32 +73,18 @@ const Panel = ({ user, onLogout, updateUser }) => {
 
     const onCreateRoom = async () => {
         await createRoom(
-            roomName,
-            roomDescription,
-            roomIsPrivate,
-            roomPassword
+            createRoomForm.roomName,
+            createRoomForm.roomDescription,
+            createRoomForm.roomIsPrivate,
+            createRoomForm.roomPassword
         );
         setCreateModalVisible(false);
-        setRoomName('');
-        setRoomDescription('');
-        setRoomIsPrivate(false);
-        setRoomPassword('');
-        setTimeout(() => {
-            refreshRooms();
-        }, 300);
+        createRoomDispatch({ type: CreateRoomForm.RESET_ROOM });
+        refreshRooms();
     }
 
     const onJoinRoom = id => {
         history.push(`/chat/${id}`);
-    }
-
-    const onSearch = async (query) => {
-        setSearchQuery(query);
-        if (query.length > 3) {
-            setSearchResults(await searchRoomByName(query));
-        } else {
-            setSearchResults([]);
-        }
     }
 
     const onSubscribeToRoom = async (id, isPrivate) => {
@@ -131,14 +122,14 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 <CreateRoomModal 
                     visible={ createRoomModalVisible } 
                     onclose={ () => setCreateModalVisible(false) }
-                    roomName={ roomName }
-                    setRoomName={ setRoomName }
-                    roomDescription={ roomDescription }
-                    setRoomDescription={ setRoomDescription }
-                    roomIsPrivate={ roomIsPrivate }
-                    setRoomIsPrivate={ setRoomIsPrivate }
-                    roomPassword={ roomPassword }
-                    setRoomPassword={ setRoomPassword }
+                    roomName={ createRoomForm.roomName }
+                    setRoomName={ payload => createRoomDispatch({ type: CreateRoomForm.UPDATE_ROOM_NAME, payload }) }
+                    roomDescription={ createRoomForm.roomDescription }
+                    setRoomDescription={ payload => createRoomDispatch({ type: CreateRoomForm.UPDATE_ROOM_DESCRIPTION, payload }) }
+                    roomIsPrivate={ createRoomForm.roomIsPrivate }
+                    setRoomIsPrivate={ payload => createRoomDispatch({ type: CreateRoomForm.UPDATE_ROOM_IS_PRIVATE, payload }) }
+                    roomPassword={ createRoomForm.roomPassword }
+                    setRoomPassword={ payload => createRoomDispatch({ type: CreateRoomForm.UPDATE_ROOM_PASSWORD, payload }) }
                     onCreateRoom={ onCreateRoom }
                 />
                 <Header 
@@ -146,7 +137,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
                     lastName={ user.lastName } 
                     img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
                     searchQuery={ searchQuery }
-                    setSearchQuery={ onSearch }
+                    setSearchQuery={ setSearchQuery }
                     searchResults={ searchResults }
                     onSubscribeToRoom={ onSubscribeToRoom }
                 />
