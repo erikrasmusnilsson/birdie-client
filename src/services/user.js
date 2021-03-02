@@ -86,4 +86,33 @@ const update = async (
     }
 }
 
-export { login, signup, update };
+const uploadProfileImage = async (id, img) => {
+    const form = new FormData();
+    form.append("image", img);
+    await birdie.post(
+        `/user/${id}/image`,
+        form,
+        {
+            withCredentials: true,
+            headers: {
+                "Content-Type": 'multipart/form-data'
+            }
+        } 
+    );
+}
+
+const fetchProfileImage = async id => {
+    if (process.env.REACT_APP_PROD === 'true') {
+        try {
+            const response = await birdie.get(`/user/${id}/image`, { withCredentials: true });
+            return response.data;
+        } catch (err) {
+            console.log(err);
+            return `${process.env.PUBLIC_URL}/images/default-profile.png`;
+        }
+    } else {
+        return require(`${process.env.PUBLIC_URL}/images/default-profile.png`); // return placeholder
+    }
+}
+
+export { login, signup, update, uploadProfileImage, fetchProfileImage };

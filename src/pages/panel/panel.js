@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import useTimeRestrictedSearch from '../../hooks/useTimeRestrictedSearch';
+import useProfileImage from '../../hooks/useProfileImage';
 
 import { createRoom, subscribeToRoom, subscribeToRoomWithPassword } from '../../services/rooms';
 import useJoinedRooms from '../../hooks/useJoinedRooms';
@@ -24,6 +25,8 @@ import { TextButton, PrimaryButton } from '../../components/buttons';
 
 const Panel = ({ user, onLogout, updateUser }) => {
     const history = useHistory();
+
+    const [profileImage, updateProfileImage] = useProfileImage(user._id);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -135,7 +138,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 <Header 
                     firstName={ user.firstName } 
                     lastName={ user.lastName } 
-                    img={ `${process.env.PUBLIC_URL}/images/developers/erik-rasmus-nilsson.png` } 
+                    img={ profileImage } 
                     searchQuery={ searchQuery }
                     setSearchQuery={ setSearchQuery }
                     searchResults={ searchResults }
