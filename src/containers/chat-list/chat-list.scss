@@ -1,9 +1,10 @@
 @import '../../sass/mixins.scss';
 
 .chat-list {
+    margin-top: 10.5rem;
     list-style-type: none;
-    overflow-y: scroll;
-    height: 80vh;
+    overflow-y: auto;
+    height: 60rem;
     position: relative;
     padding: 2rem 0;
 
@@ -11,6 +12,7 @@
         display: flex;
         width: 100%;
         justify-content: flex-start;
+        flex: 0 0 100%;
     }
 
     &__item-self {

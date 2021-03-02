@@ -13,7 +13,8 @@ const reducer = (_state = initial, action) => {
                 email: action.user.email,
                 description: action.user.description,
                 firstName: action.user.firstName,
-                lastName: action.user.lastName
+                lastName: action.user.lastName,
+                image: action.user.image
             };
             break;
         case TYPE_LOG_OUT: 

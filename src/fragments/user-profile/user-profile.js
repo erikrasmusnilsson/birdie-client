@@ -9,6 +9,8 @@ import EditMode from './edit-mode';
 const UserProfile = ({
     description,
     setDescription,
+    profileImage,
+    setProfileImage,
     edit,
     onStartEdit,
     onCancel,
@@ -24,6 +26,8 @@ const UserProfile = ({
                 <EditMode 
                     description={ description }
                     setDescription={ setDescription }
+                    profileImage={ profileImage }
+                    setProfileImage={ setProfileImage }
                     onCancel={ onCancel }
                     onSave={ onSave }
                 />

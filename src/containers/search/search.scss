@@ -12,8 +12,8 @@
         background-color: white;
         width: 100%;
         z-index: 1500;
-        overflow: scroll;
-        max-height: 20rem;
+        overflow-y: auto;
+        max-height: 70vh;
         filter: drop-shadow(0 1.5rem 3rem rgba(#000, .05));
     }
 }
