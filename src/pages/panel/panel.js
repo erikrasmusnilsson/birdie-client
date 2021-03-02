@@ -7,9 +7,9 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import useTimeRestrictedSearch from '../../hooks/useTimeRestrictedSearch';
-import useProfileImage from '../../hooks/useProfileImage';
 
 import { createRoom, subscribeToRoom, subscribeToRoomWithPassword } from '../../services/rooms';
+import { uploadProfileImage, fetchMain } from '../../services/user';
 import useJoinedRooms from '../../hooks/useJoinedRooms';
 import * as CreateRoomForm from '../../hooks/useCreateRoomForm';
 import { update } from '../../services/user';
@@ -26,7 +26,7 @@ import { TextButton, PrimaryButton } from '../../components/buttons';
 const Panel = ({ user, onLogout, updateUser }) => {
     const history = useHistory();
 
-    const [profileImage, updateProfileImage] = useProfileImage(user._id);
+    const [updateProfileImageFile, setUpdateProfileImageFile] = useState(null);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -62,6 +62,13 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 newUser.lastName,
                 newUser.description
             );
+            
+            if (updateProfileImageFile) {
+                await uploadProfileImage(user._id, updateProfileImageFile);
+                const u = await fetchMain();
+                newUser.image = u.image;
+            }
+
             updateUser(newUser);
             setEditingDescription(false);
         } catch (err) {
@@ -138,7 +145,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 <Header 
                     firstName={ user.firstName } 
                     lastName={ user.lastName } 
-                    img={ profileImage } 
+                    img={ user.image ? `http://localhost:3000/${user.image}` : `${process.env.PUBLIC_URL}/images/default-profile.png` } 
                     searchQuery={ searchQuery }
                     setSearchQuery={ setSearchQuery }
                     searchResults={ searchResults }
@@ -155,6 +162,8 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 />
                 <UserProfile 
                     className="u-margin-top-medium"
+                    profileImage={ updateProfileImageFile }
+                    setProfileImage={ setUpdateProfileImageFile }
                     description={ description } 
                     setDescription={ setDescription }
                     edit={ editingDescription }

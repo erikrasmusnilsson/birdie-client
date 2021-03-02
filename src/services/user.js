@@ -74,11 +74,7 @@ const update = async (
             }, {
                 withCredentials: true
             });
-
-            console.log(response.status, "status");
-            console.log(response.data, "data")
         } catch (err) {
-            console.log(err);
             throw new Error("Error when communicating with server.");
         }
     } else {
@@ -105,9 +101,9 @@ const fetchProfileImage = async id => {
     if (process.env.REACT_APP_PROD === 'true') {
         try {
             const response = await birdie.get(`/user/${id}/image`, { withCredentials: true });
-            return response.data;
+            console.log(response.data.image)
+            return response.data.image;
         } catch (err) {
-            console.log(err);
             return `${process.env.PUBLIC_URL}/images/default-profile.png`;
         }
     } else {
@@ -115,4 +111,18 @@ const fetchProfileImage = async id => {
     }
 }
 
-export { login, signup, update, uploadProfileImage, fetchProfileImage };
+const fetchMain = async () => {
+    if (process.env.REACT_APP_PROD === 'true') {
+        try {
+            const response = await birdie.get(`/main`, { withCredentials: true });
+            console.log(response.data)
+            return response.data;
+        } catch (err) {
+            return `${process.env.PUBLIC_URL}/images/default-profile.png`;
+        }
+    } else {
+        return require(`${process.env.PUBLIC_URL}/images/default-profile.png`); // return placeholder
+    }
+}
+
+export { login, signup, update, uploadProfileImage, fetchProfileImage, fetchMain };

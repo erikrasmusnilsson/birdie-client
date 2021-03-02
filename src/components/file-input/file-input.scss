@@ -1,0 +1,12 @@
+.file-input {
+    &__input {
+       display: none;
+    }
+
+    &__label {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: var(--color-grey-light-2);
+        border-radius: 50rem;
+    }
+}
