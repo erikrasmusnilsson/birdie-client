@@ -106,7 +106,7 @@ const fetchProfileImage = async id => {
             return `${process.env.PUBLIC_URL}/images/default-profile.png`;
         }
     } else {
-        return require(`${process.env.PUBLIC_URL}/images/default-profile.png`); // return placeholder
+        return `${process.env.PUBLIC_URL}/images/default-profile.png`;
     }
 }
 
