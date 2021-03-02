@@ -101,7 +101,6 @@ const fetchProfileImage = async id => {
     if (process.env.REACT_APP_PROD === 'true') {
         try {
             const response = await birdie.get(`/user/${id}/image`, { withCredentials: true });
-            console.log(response.data.image)
             return response.data.image;
         } catch (err) {
             return `${process.env.PUBLIC_URL}/images/default-profile.png`;
@@ -115,13 +114,12 @@ const fetchMain = async () => {
     if (process.env.REACT_APP_PROD === 'true') {
         try {
             const response = await birdie.get(`/main`, { withCredentials: true });
-            console.log(response.data)
             return response.data;
         } catch (err) {
             return `${process.env.PUBLIC_URL}/images/default-profile.png`;
         }
     } else {
-        return require(`${process.env.PUBLIC_URL}/images/default-profile.png`); // return placeholder
+        return `${process.env.PUBLIC_URL}/images/default-profile.png`;
     }
 }
 
