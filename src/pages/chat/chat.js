@@ -3,6 +3,7 @@ import '../../sass/grid.scss';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getRoomById, updateRoom } from '../../services/rooms';
+import Protected from '../../hoc/protected';
 
 import ChatList from '../../containers/chat-list';
 import ChatBox from '../../containers/chat-box';
@@ -37,50 +38,33 @@ const Chat = () => {
         },
         {
             sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "...hallå?"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
+            content: "Hej alihopa!",
+            self: true
         }
     ];
 
     return (
-        <main className="chat">
-            <div className="chat__content row">
-                <div className="chat__profile-box">
-                    <ChatProfile 
-                        title={ room.name }
-                        className="chat__chat-profile"
-                        edit={ editingDescription }
-                        description={ roomDescription }
-                        setDescription={ setRoomDescription }
-                        onStartEdit={ () => setEditingDescription(true) }
-                        onSave={ onSaveDescription }
-                        onCancel={ () => setEditingDescription(false) }
-                        isOwner={ room.isOwner }
-                    />
+        <Protected>
+            <main className="chat">
+                <div className="chat__content row">
+                    <div className="chat__profile-box">
+                        <ChatProfile 
+                            title={ room.name }
+                            className="chat__chat-profile"
+                            edit={ editingDescription }
+                            description={ roomDescription }
+                            setDescription={ setRoomDescription }
+                            onStartEdit={ () => setEditingDescription(true) }
+                            onSave={ onSaveDescription }
+                            onCancel={ () => setEditingDescription(false) }
+                            isOwner={ room.isOwner }
+                        />
+                    </div>
+                    <ChatList chat={ mockedMessages } />
+                    <ChatBox />
                 </div>
-                <ChatList chat={ mockedMessages } />
-                <ChatBox />
-            </div>
-        </main>
+            </main>
+        </Protected>
     )
 }
 
