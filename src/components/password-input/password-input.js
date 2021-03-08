@@ -11,7 +11,8 @@ const PasswordInput = ({
     max,
     className,
     icon,
-    disabled
+    disabled,
+    onEnterPressed
 }) => {
     const classNames = [
         "password-input-box", 
@@ -28,6 +29,13 @@ const PasswordInput = ({
         counter = `${value.length}/${min}~${max}`;
     }
 
+    const onKeyDown = e => {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            onEnterPressed();
+        }
+    }
+
     return (
         <div className={ classNames }>
             <input className="password-input-box__input"
@@ -35,6 +43,7 @@ const PasswordInput = ({
                 onChange={ e => onchange(e.target.value) }
                 value={ value }
                 required={ required }
+                onKeyDown={ e => onKeyDown(e) }
                 minLength={ min }
                 maxLength={ max } 
                 type='password'

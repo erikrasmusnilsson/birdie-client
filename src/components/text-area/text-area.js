@@ -7,7 +7,8 @@ const TextArea = ({
     required,
     min,
     max,
-    className
+    className,
+    onEnterPressed
 }) => {
     const classNames = [
         "text-area-box",
@@ -23,11 +24,19 @@ const TextArea = ({
         counter = `${value.length}/${min}~${max}`;
     }
 
+    const onKeyDown = e => {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            onEnterPressed();
+        }
+    }
+
     return (
         <div className={ classNames }>
             <textarea 
                 className="text-area-box__input"
                 onChange={ e => onchange(e.target.value) }
+                onKeyDown={ e => onKeyDown(e) }
                 placeholder={ placeholder }
                 required={ required }
                 min={ min }

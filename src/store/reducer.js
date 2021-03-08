@@ -14,7 +14,8 @@ const reducer = (_state = initial, action) => {
                 description: action.user.description,
                 firstName: action.user.firstName,
                 lastName: action.user.lastName,
-                image: action.user.image
+                image: action.user.image,
+                password: action.user.password
             };
             break;
         case TYPE_LOG_OUT: 

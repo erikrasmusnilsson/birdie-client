@@ -145,7 +145,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
                 <Header 
                     firstName={ user.firstName } 
                     lastName={ user.lastName } 
-                    img={ user.image ? `http://localhost:3000/${user.image}` : `${process.env.PUBLIC_URL}/images/default-profile.png` } 
+                    img={ user.image ? `/${user.image}` : `${process.env.PUBLIC_URL}/images/default-profile.png` } 
                     searchQuery={ searchQuery }
                     setSearchQuery={ setSearchQuery }
                     searchResults={ searchResults }

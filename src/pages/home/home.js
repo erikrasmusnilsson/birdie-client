@@ -30,7 +30,7 @@ const Home = ({ onLogin }) => {
     const onLoginPressed = async () => {
         try {
             const user = await login(logIn.email, logIn.password);
-            onLogin(user);
+            onLogin({...user, password: logIn.password});
             setLoginPrompt("");
             history.push("/panel");
         } catch (err) {
@@ -64,6 +64,7 @@ const Home = ({ onLogin }) => {
                 signUp.email,
                 signUp.password
             );
+            setShowLogin(true);
         } catch (err) {
             setSignupPrompt(err.message);
         }
