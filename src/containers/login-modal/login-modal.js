@@ -35,7 +35,8 @@ const LoginModal = ({
                     required
                     min={ 6 }
                     className="u-margin-bottom-medium"
-                    icon="icon-unlock" />
+                    icon="icon-unlock" 
+                    onEnterPressed={ onlogin } />
                 <PrimaryButton onclick={ onlogin } className="login__login-button">Log in</PrimaryButton>
                 <TextButton onclick={ onsignup } className="login__signup-button">or sign up here</TextButton>
             </div>

@@ -1,20 +1,27 @@
 import './chat.scss';
 import '../../sass/grid.scss';
 import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getRoomById, updateRoom } from '../../services/rooms';
+import { createRoom, getRoomById, updateRoom } from '../../services/rooms';
+import useChatWebSocket from '../../hooks/useWebSocket';
 import Protected from '../../hoc/protected';
+import {ADDRESS} from '../../api/birdie';
 
 import ChatList from '../../containers/chat-list';
 import ChatBox from '../../containers/chat-box';
 import ChatProfile from '../../fragments/chat-profile';
 
-const Chat = () => {
+const Chat = ({ user }) => {
     const { id } = useParams();
+    const url = `ws://${ADDRESS}/chat?chatId=${id}&email=${user.email}&password=${user.password}`;
     const [room, setRoom] = useState({});
+    const [currentMessage, setCurrentMessage] = useState('');
 
     const [editingDescription, setEditingDescription] = useState(false);
     const [roomDescription, setRoomDescription] = useState('');
+
+    const [send, messages] = useChatWebSocket(url, user);
 
     useEffect(async () => {
         const room = await getRoomById(id);
@@ -31,17 +38,10 @@ const Chat = () => {
         }
     }
 
-    const mockedMessages = [
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!"
-        },
-        {
-            sender: "Rasmus Nilsson",
-            content: "Hej alihopa!",
-            self: true
-        }
-    ];
+    const onSend = () => {
+        send(currentMessage);
+        setCurrentMessage("");
+    }
 
     return (
         <Protected>
@@ -60,12 +60,23 @@ const Chat = () => {
                             isOwner={ room.isOwner }
                         />
                     </div>
-                    <ChatList chat={ mockedMessages } />
-                    <ChatBox />
+                    <ChatList chat={ messages } />
+                    <ChatBox 
+                        avatar={ user.image ? `/${user.image}` : `${process.env.PUBLIC_URL}/images/default-profile.png` }
+                        message={ currentMessage }
+                        setMessage={ setCurrentMessage }
+                        onSend={ onSend }
+                    />
                 </div>
             </main>
         </Protected>
     )
 }
 
-export default Chat;
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    };
+}
+
+export default connect(mapStateToProps, null)(Chat);
