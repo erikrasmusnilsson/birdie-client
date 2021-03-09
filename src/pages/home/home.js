@@ -1,5 +1,5 @@
 import './home.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { login, signup } from '../../services/user';
 import { connect } from 'react-redux';
@@ -17,6 +17,8 @@ import HomeAbout from '../../fragments/home/about';
 
 const Home = ({ onLogin }) => {
     const history = useHistory();
+    const signUpFormElement = useRef(); 
+ 
 
     // Login
     const [logIn, logInDispatch] = LoginForm.useLoginForm();
@@ -69,7 +71,10 @@ const Home = ({ onLogin }) => {
             setSignupPrompt(err.message);
         }
     }
-
+    const onLoginSignup = () => {
+        signUpFormElement.current.scrollIntoView({ behavior: "smooth" });
+        setShowLogin(false);
+    }
     const empty = value => {
         return value === "";
     }
@@ -85,13 +90,15 @@ const Home = ({ onLogin }) => {
                 password={ logIn.password }
                 setpassword={ payload => logInDispatch({type: LoginForm.UPDATE_PASSWORD, payload}) }
                 onlogin={ onLoginPressed }
+                onsignup={onLoginSignup}
             />
             <div className="home__login-button">
                 <TextButton onclick={ () => setShowLogin(true) }>Log in/sign up</TextButton>
             </div>
             <HomeHeader />
             <HomeIntroduction />
-            <SignUp
+            <SignUp 
+                containerref={signUpFormElement}
                 prompt={ signupPrompt }
                 firstName={ signUp.firstName }
                 setfirstname={ payload => signUpDispatch({ type: SignUpForm.UPDATE_FIRST_NAME, payload }) }
