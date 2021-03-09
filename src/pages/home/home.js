@@ -1,5 +1,5 @@
 import './home.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { login, signup } from '../../services/user';
 import { connect } from 'react-redux';
@@ -17,6 +17,10 @@ import HomeAbout from '../../fragments/home/about';
 
 const Home = ({ onLogin }) => {
     const history = useHistory();
+    const signUpFormElement = useRef(); 
+    useEffect(() => {
+        signUpFormElement.current.scrollIntoView({ behaviour: "smooth" });
+      });
 
     // Login
     const [logIn, logInDispatch] = LoginForm.useLoginForm();
@@ -91,7 +95,8 @@ const Home = ({ onLogin }) => {
             </div>
             <HomeHeader />
             <HomeIntroduction />
-            <SignUp
+            <SignUp 
+                ref={signUpFormElement}
                 prompt={ signupPrompt }
                 firstName={ signUp.firstName }
                 setfirstname={ payload => signUpDispatch({ type: SignUpForm.UPDATE_FIRST_NAME, payload }) }
