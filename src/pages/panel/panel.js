@@ -115,6 +115,7 @@ const Panel = ({ user, onLogout, updateUser }) => {
             setTimeout(() => {
                 refreshRooms();
             }, 300);
+            setRoomPasswordPrompt("");
             setRoomPasswordModalVisible(false);
         } catch (err) {
             setRoomPasswordPrompt(err.message);

@@ -22,6 +22,8 @@
         display: inline-block;
         border-radius: 1.4rem;
         border-top-left-radius: 0;
+        word-break: break-all;
+        hyphens: auto;
     }
 }
 
