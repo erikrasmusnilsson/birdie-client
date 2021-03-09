@@ -19,10 +19,11 @@ const SignUp = ({
     setpassword,
     confirmpassword,
     setconfirmpassword,
-    onsignup
+    onsignup,
+    containerref
 }) => {
     return (
-        <section className="sign-up">
+        <section className="sign-up" ref={containerref}>
             <ScrollFadeIn direction="to-top" offset={ -200 }>
                 <div className="sign-up__form">
                     <h2 className="u-margin-bottom-medium sign-up__title">Joooin us</h2>

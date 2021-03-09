@@ -18,9 +18,7 @@ import HomeAbout from '../../fragments/home/about';
 const Home = ({ onLogin }) => {
     const history = useHistory();
     const signUpFormElement = useRef(); 
-    useEffect(() => {
-        signUpFormElement.current.scrollIntoView({ behaviour: "smooth" });
-      });
+ 
 
     // Login
     const [logIn, logInDispatch] = LoginForm.useLoginForm();
@@ -73,7 +71,10 @@ const Home = ({ onLogin }) => {
             setSignupPrompt(err.message);
         }
     }
-
+    const onLoginSignup = () => {
+        signUpFormElement.current.scrollIntoView({ behavior: "smooth" });
+        setShowLogin(false);
+    }
     const empty = value => {
         return value === "";
     }
@@ -89,6 +90,7 @@ const Home = ({ onLogin }) => {
                 password={ logIn.password }
                 setpassword={ payload => logInDispatch({type: LoginForm.UPDATE_PASSWORD, payload}) }
                 onlogin={ onLoginPressed }
+                onsignup={onLoginSignup}
             />
             <div className="home__login-button">
                 <TextButton onclick={ () => setShowLogin(true) }>Log in/sign up</TextButton>
@@ -96,7 +98,7 @@ const Home = ({ onLogin }) => {
             <HomeHeader />
             <HomeIntroduction />
             <SignUp 
-                ref={signUpFormElement}
+                containerref={signUpFormElement}
                 prompt={ signupPrompt }
                 firstName={ signUp.firstName }
                 setfirstname={ payload => signUpDispatch({ type: SignUpForm.UPDATE_FIRST_NAME, payload }) }
